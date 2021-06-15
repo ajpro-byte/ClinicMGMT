@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a453f418-2320-41a9-80b2-39b3da566429">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="gender" class="java.lang.String"/>
+	<parameter name="marital" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="blood type" class="java.lang.String"/>
+	<parameter name="datetime" class="java.lang.String"/>
+	<parameter name="a" class="java.lang.String"/>
+	<parameter name="b" class="java.lang.String"/>
+	<parameter name="c" class="java.lang.String"/>
+	<parameter name="d" class="java.lang.String"/>
+	<parameter name="e" class="java.lang.String"/>
+	<parameter name="f" class="java.lang.String"/>
+	<parameter name="g" class="java.lang.String"/>
+	<parameter name="h" class="java.lang.String"/>
+	<parameter name="if" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * from tbl_clientinfo]]>
+	</queryString>
+	<field name="ClientID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Member" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Fname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Number_Street" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="City" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="State" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Zipcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Marital_State" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Home" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Work" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cell" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Spouse_Home" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Spouse_Work" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Spouse_Cell" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EC_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EC_Contact" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Refer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Physician" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="If_yes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Conditions" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="555" height="36" forecolor="#CC0000" uuid="7b4445fe-b32c-4e15-a4de-c008355ba238"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<text><![CDATA[DOLE PHILIPPINES INCORPORATED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="47" width="555" height="22" uuid="4370c55f-444e-4f01-89a7-fc7ab6aa41d9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="15"/>
+				</textElement>
+				<text><![CDATA[Cannery Rd, Cannery Site, Polomolok, 9504 South Cotabato]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="39" forecolor="#000000" uuid="fc9c4a3c-cd12-4b8a-aa1d-e089b9d35158"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="20"/>
+				</textElement>
+				<text><![CDATA[Dole Clinic]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="381" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="555" height="22" uuid="6a1a21b4-3dcc-4de5-8d01-bdf416dfc21a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="15"/>
+				</textElement>
+				<text><![CDATA[Medical Report Form]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="70" width="42" height="17" uuid="5970abef-690b-4bc5-9d8a-0af06ad5a7ee"/>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="92" width="42" height="17" uuid="768eb886-48aa-43c4-b6ca-b4363b9baf33"/>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="70" width="45" height="17" uuid="84407a45-884c-4dd8-9c0b-f9f3e73e9bbe"/>
+				<text><![CDATA[Gender:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="92" width="68" height="17" uuid="3104493c-ed96-4b53-93ae-d4bd063eebd3"/>
+				<text><![CDATA[Blood Type:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="70" width="45" height="17" uuid="0b3a07e5-c37e-413c-9fdd-6f40c0061aa9"/>
+				<text><![CDATA[Marital:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="118" width="555" height="1" uuid="5c5ba350-721d-42ad-88a8-ef96a148a62d"/>
+			</line>
+			<textField>
+				<reportElement x="43" y="72" width="100" height="15" uuid="5a65ec84-b013-48d1-867b-eeadea7e8004"/>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="70" width="100" height="17" uuid="aca52cf1-4088-48c8-bbde-964e7ff58192"/>
+				<textFieldExpression><![CDATA[$P{gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="70" width="100" height="17" uuid="290f6129-42fd-44f3-b9ba-95d7bbc8cef3"/>
+				<textFieldExpression><![CDATA[$P{marital}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="92" width="100" height="17" uuid="31ae63eb-c014-4e17-9954-003ade0a948e"/>
+				<textFieldExpression><![CDATA[$P{blood type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="92" width="100" height="17" uuid="9d7b3ba7-581f-40cf-bda8-89920af5a3b5"/>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="129" width="137" height="17" uuid="c382103e-74ee-4d5e-99c8-2be55250770e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medical examine result]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="153" width="119" height="17" uuid="f96719cf-670c-490b-895b-c51bd52b2543"/>
+				<text><![CDATA[HIV Test: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="170" width="119" height="17" uuid="7f13b15f-6e34-44c1-b21e-d76006bdb399"/>
+				<text><![CDATA[TB Test:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="187" width="119" height="17" uuid="c2f3c991-f69f-4b25-b2a9-9192b7ebb058"/>
+				<text><![CDATA[Heart Desease:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="204" width="119" height="17" uuid="326f4833-7dca-4868-ae88-0cc356cb494b"/>
+				<text><![CDATA[High Blood Preasure:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="153" width="119" height="17" uuid="ce621c24-bde3-42e2-b772-c671894b5a76"/>
+				<text><![CDATA[Malaria:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="170" width="119" height="17" uuid="11bc6db0-6dd9-48e6-a4bf-b2953daac27d"/>
+				<text><![CDATA[Leaver Function:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="187" width="119" height="17" uuid="c34761cf-9bd1-4d90-80af-e54da2f68995"/>
+				<text><![CDATA[VDRL Test:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="204" width="119" height="17" uuid="54e43390-4fd0-44f1-99b7-302982d5f2a1"/>
+				<text><![CDATA[TPHA Test:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="225" width="391" height="17" uuid="8c45711e-6f4e-489a-98aa-bddd74dccea9"/>
+				<text><![CDATA[In the option of the examining physician, is the candidate fit for this fellowship?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="254" width="75" height="17" uuid="c328b579-77b6-48af-8980-86e95f04e3aa"/>
+				<text><![CDATA[Seal of Clinic]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="36" width="230" height="20" uuid="2841536f-0a58-4aad-b768-37f58d59f17f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{datetime}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="56" width="555" height="1" uuid="7607a418-d059-4d17-88af-ccaab0b02528"/>
+			</line>
+			<staticText>
+				<reportElement x="373" y="318" width="124" height="17" uuid="4ac4d9d9-a2f4-4889-b9b1-3c4ea3f07807"/>
+				<text><![CDATA[Doctor Name & Signature]]></text>
+			</staticText>
+			<line>
+				<reportElement x="363" y="314" width="146" height="1" uuid="c57a6ffd-12cc-4551-b329-c72a1d9c75d5"/>
+			</line>
+			<line>
+				<reportElement x="1" y="359" width="555" height="1" uuid="c876c24f-9993-4826-ab06-be426d303162"/>
+			</line>
+			<line>
+				<reportElement x="0" y="377" width="555" height="1" uuid="9f3d034b-1b28-45a4-a5fb-180dec42b784"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="359" width="514" height="17" uuid="69af06c1-7df4-4a8e-96da-408e31318310"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Dole Clnic cannery road and site polomolok south cotabat, sy: 2021 - 2022]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="153" width="137" height="17" uuid="eed1fda5-ac3a-4255-8399-702021cfab41"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{a}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="170" width="137" height="17" uuid="8298800f-f82d-4162-a29d-e128ec4da5f7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{b}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="187" width="137" height="17" uuid="b3769bd4-0334-416f-8595-3d411b7cee03"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{c}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="205" width="137" height="16" uuid="398e50aa-b0f6-4c55-af81-58078cc92ea4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="153" width="114" height="17" uuid="ddb31f7f-0b03-4c1b-a63a-07563cc3ec1f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{e}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="170" width="114" height="17" uuid="3ed8c9c6-e0f1-45a4-847d-85a51ec635c5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{f}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="187" width="114" height="17" uuid="f17663d8-a0e8-4907-9b69-08054ba006c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{g}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="205" width="114" height="16" uuid="de83c7bd-51f0-4f44-9e9f-c7b9dcd49cee"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="225" width="100" height="17" uuid="8f55b657-4414-40c6-85d7-1912b1cb77de"/>
+				<textFieldExpression><![CDATA[$P{if}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="5" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

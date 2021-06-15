@@ -1,0 +1,19 @@
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT Status FROM tbl_Test");
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                String Status = rs.getString("TestData");
+                if(Status.equals("Unvailable")){
+				
+				btn_test1.setForeground(color.red);
+				btn_test2.setForeground(color.red);
+				btn_test3.setForeground(color.red);
+				
+				}else if(Status.equals("Vacant")){
+				
+				btn_test1.setForeground(color.blue);
+				btn_test2.setForeground(color.blue);
+				btn_test3.setForeground(color.blue);
+				
+				}
+            
