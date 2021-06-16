@@ -4949,7 +4949,9 @@ JOptionPane.showMessageDialog(null,"System error please check");
 
     private void sasaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sasaveActionPerformed
         
-        
+       if (said.getText().equals("")){ 
+           
+       }else{
         try{
         if (sasave.getText().equals("SAVE")){
              if (btngrpapp2.isSelected() == true && btngrpapp.isSelected() == false){
@@ -5087,7 +5089,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
            
         }
         
-        }catch(Exception e){JOptionPane.showMessageDialog(null,"Client schedule duplication is not valid!");}
+        }catch(Exception e){JOptionPane.showMessageDialog(null,"Client schedule duplication is not valid!");}}
     }//GEN-LAST:event_sasaveActionPerformed
 
     private void sasave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sasave1ActionPerformed
@@ -5614,6 +5616,13 @@ clear_app();
             
            pst = (PreparedStatement) conn.prepareStatement(sql1);
               pst.executeUpdate();
+              
+            if (aswalkin.isSelected()==true){
+                    refresh_csalist();
+
+            }else{
+            
+            
                             
             JFrame frame = new JFrame();
             String[] options = new String[2];
@@ -5651,9 +5660,22 @@ clear_app();
                                 }}
                             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
             }else if(p==1){
+             if (aswalkin.isSelected()==true){
+               refresh_csalist();
+        }else{
+        try{
+             String sql13 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
+            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql13);
+            rs = pst.executeQuery();
+            astable.setModel(DbUtils.resultSetToTableModel(rs));
             
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        }
             }
-                    
+            
+            }        
             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
                             
             
@@ -5696,6 +5718,12 @@ clear_app();
            pst = (PreparedStatement) conn.prepareStatement(sql1);
               pst.executeUpdate();
                             
+                if (aswalkin.isSelected()==true){
+                    refresh_csalist();
+
+            }else{
+            
+            
                JFrame frame = new JFrame();
             String[] options = new String[2];
             options[0] = new String("Remove from list");
@@ -5745,7 +5773,7 @@ clear_app();
             JOptionPane.showMessageDialog(null, ex);
         }
         }
-            }
+            }}
                     
             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
                             
