@@ -3090,12 +3090,12 @@ public class Main_Frame extends javax.swing.JFrame {
         sarem.setText("Show Removed");
         sarem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sarem.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 saremAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         sarem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -5040,7 +5040,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                         pst.setString(1, sadate.getText());
                         pst.setString(2, satime1.getText());
                         pst.setString(3, samessage.getText());
-                        pst.setString(4, "Scheduled");
+                        pst.setString(4, "Rescheduled");
                         
                          int update = pst.executeUpdate();
                         if (update != 0) {
@@ -5067,7 +5067,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                         pst.setString(1, sadate.getText());
                         pst.setString(2, satime1.getText());
                         pst.setString(3, samessage.getText());
-                        pst.setString(4, "Rescheduled");
+                        pst.setString(4, "Scheduled");
                         
                          int update = pst.executeUpdate();
                         if (update != 0) {
