@@ -5138,8 +5138,8 @@ clear_app();
         int z = satable.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) satable.getModel();
             said.setText(model.getValueAt(z,0).toString());
-            saname.setText(model.getValueAt(z,1).toString());
-            samem.setText(model.getValueAt(z,2).toString());
+            saname.setText(model.getValueAt(z,2).toString());
+            samem.setText(model.getValueAt(z,1).toString());
             String sched = model.getValueAt(z,6).toString();
             if (sched.contentEquals("Scheduled")){
              btngrpapp.setSelected(false);
