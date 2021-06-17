@@ -5608,19 +5608,19 @@ clear_app();
                         pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
 
                         pst.setString(1, asid.getText());
-                        pst.setString(1, member);
-                        pst.setString(1, asname.getText());
-                        pst.setString(1, s_date.getText());
-                        pst.setString(1, s_time.getText());
-                        pst.setString(2, "N/A");
-                        pst.setString(2, "WALKIN");
-                        pst.setString(2, contact1);
-                        pst.setString(2, s_date.getText());
-                        pst.setString(2, "Served");
+                        pst.setString(2, member);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, "WALKIN");
+                        pst.setString(8, contact1);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
                         
-                        int add = pst.executeUpdate();
+                        int add1 = pst.executeUpdate();
 
-                            if(add!=0){
+                            if(add1!=0){
                                 JOptionPane.showMessageDialog(null,"WALKIN Client Served");
                                  refresh_csalist();
                             }
