@@ -5581,8 +5581,8 @@ clear_app();
         if (asyes.isSelected()==true && asno.isSelected()==false){ 
         try{
             Connection connn = MysqlConnection.ConnectDB();
-            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
-            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+           JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
            // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
@@ -5707,8 +5707,8 @@ clear_app();
         
          try{
             Connection connn = MysqlConnection.ConnectDB();
-            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
-            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
     // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
@@ -6026,8 +6026,8 @@ clear_app();
        }else{
         try{  
         Connection connn = MysqlConnection.ConnectDB();
-            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\med_receipt.jrxml");
-            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\med_receipt.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
             // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
