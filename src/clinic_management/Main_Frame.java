@@ -5566,6 +5566,7 @@ clear_app();
         try{
             Connection connn = MysqlConnection.ConnectDB();
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
            // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
@@ -5600,10 +5601,10 @@ clear_app();
                 pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
                     rs = pst.executeQuery();
                     if (rs.next()) {
-                        String contact1 = rs.getString("Contact");
+                        String contact1 = rs.getString("Cell");
                         String member = rs.getString("Member");
                         
-                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,AccStat) values (?,?,?,?,?,?,?,?,?,?)";
+                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat) values (?,?,?,?,?,?,?,?,?,?)";
                         
                         pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
 
@@ -5624,10 +5625,7 @@ clear_app();
                                 JOptionPane.showMessageDialog(null,"WALKIN Client Served");
                                  refresh_csalist();
                             }
-
-                        
                     }
-
             }else{             
             JFrame frame = new JFrame();
             String[] options = new String[2];
@@ -5694,7 +5692,8 @@ clear_app();
          try{
             Connection connn = MysqlConnection.ConnectDB();
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
-           // String query = "SELECT * FROM tbl_items";
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+    // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
@@ -5725,7 +5724,34 @@ clear_app();
               pst.executeUpdate();
                             
                 if (aswalkin.isSelected()==true){
-                    refresh_csalist();
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact1 = rs.getString("Cell");
+                        String member = rs.getString("Member");
+                        
+                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat) values (?,?,?,?,?,?,?,?,?,?)";
+                        
+                        pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                        pst.setString(1, asid.getText());
+                        pst.setString(2, member);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, "WALKIN");
+                        pst.setString(8, contact1);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
+                        
+                        int add1 = pst.executeUpdate();
+
+                            if(add1!=0){
+                                JOptionPane.showMessageDialog(null,"WALKIN Client Served");
+                                 refresh_csalist();
+                            }
+                    }
 
             }else{
             
