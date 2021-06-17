@@ -485,6 +485,7 @@ public class Main_Frame extends javax.swing.JFrame {
     }
     
     public void clear_receipt(){
+        jLabel1.setText("Update");
     ra.setText("0.00");
         rb.setText("0.00");
         rc.setText("0.00");
@@ -496,6 +497,14 @@ public class Main_Frame extends javax.swing.JFrame {
         ri.setText("0.00");
         ri.setEnabled(false);
         rtotal.setText("0.00");
+        ra.setEnabled(false);
+        rb.setEnabled(false);
+        rc.setEnabled(false);
+        rd.setEnabled(false);
+        re.setEnabled(false);
+        rf.setEnabled(false);
+        rg.setEnabled(false);
+        rh.setEnabled(false);
         
         sra.setSelected(false);
         srb.setSelected(false);
@@ -996,6 +1005,7 @@ public class Main_Frame extends javax.swing.JFrame {
         srg = new javax.swing.JCheckBox();
         srh = new javax.swing.JCheckBox();
         jLabel114 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         rclear = new javax.swing.JButton();
         rgen = new javax.swing.JButton();
         assex = new javax.swing.JTextField();
@@ -2502,6 +2512,17 @@ public class Main_Frame extends javax.swing.JFrame {
         jLabel114.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel114.setText("Medical Test Cost");
         jPanel16.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel1.setText("Update");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel16.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, 20));
 
         jPanel18.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 340, 450));
 
@@ -4577,11 +4598,6 @@ if(user.getText().contains("Please Login")){
         // TODO add your handling code here:
     }//GEN-LAST:event_asnameActionPerformed
 
-    private void rclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rclearActionPerformed
-        clear_receipt();
-       
-    }//GEN-LAST:event_rclearActionPerformed
-
     private void asaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asaddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_asaddressActionPerformed
@@ -6005,10 +6021,14 @@ clear_app();
     }//GEN-LAST:event_raActionPerformed
 
     private void rgenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgenActionPerformed
+       if (jLabel1.getText().equals("Save")){
+       JOptionPane.showMessageDialog(null,"Cost update mode is selected, Please finish updating!");
+       }else{
         try{  
         Connection connn = MysqlConnection.ConnectDB();
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\med_receipt.jrxml");
-           // String query = "SELECT * FROM tbl_items";
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Med_Report.jrxml");
+            // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
@@ -6033,7 +6053,7 @@ clear_app();
             }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
         }
-            
+       }
     }//GEN-LAST:event_rgenActionPerformed
 
     private void raKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_raKeyReleased
@@ -6108,12 +6128,17 @@ clear_app();
     }//GEN-LAST:event_rtotalMouseClicked
 
     private void sraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sraActionPerformed
+        if (jLabel1.getText().equals("Save")){
+        ra.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
         if (sra.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "HIV" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
                         //String address = rs.getString("Number_Street");
+                        ra.setEnabled(false);
                         ra.setText(rs.getString("Cost"));
                         calc_total();
                     }else{
@@ -6121,40 +6146,56 @@ clear_app();
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
         }else{ra.setText("0.00");calc_total();}
-        
+        }
     }//GEN-LAST:event_sraActionPerformed
 
     private void srbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srbActionPerformed
-      if (srb.isSelected()==true){
+    
+         if (jLabel1.getText().equals("Save")){
+        rb.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
+        
+        if (srb.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "TB" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                        rb.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         rb.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rb.setText("0.00");calc_total();}
+        }else{rb.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srbActionPerformed
 
     private void srcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srcActionPerformed
-       if (src.isSelected()==true){
+       if (jLabel1.getText().equals("Save")){
+        rc.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
+        if (src.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "Heart" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                        rc.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         rc.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rc.setText("0.00");calc_total();}
+        }else{rc.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srcActionPerformed
 
     private void srdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srdActionPerformed
+        if (jLabel1.getText().equals("Save")){
+        rd.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
         if (srd.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "Blood" + "'");
@@ -6166,67 +6207,89 @@ clear_app();
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rd.setText("0.00");calc_total();}
+        }else{rd.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srdActionPerformed
 
     private void sreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sreActionPerformed
+        
+         if (jLabel1.getText().equals("Save")){
+        re.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
+        
         if (sre.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "Malaria" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                        re.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         re.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{re.setText("0.00");calc_total();}
+        }else{re.setText("0.00");calc_total();}}
     }//GEN-LAST:event_sreActionPerformed
 
     private void srfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srfActionPerformed
-       if (srf.isSelected()==true){
+      if (jLabel1.getText().equals("Save")){
+        rf.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
+        if (srf.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "Liver" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                                rf.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         rf.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rf.setText("0.00");calc_total();}
+        }else{rf.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srfActionPerformed
 
     private void srgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srgActionPerformed
-       if (srg.isSelected()==true){
+       if (jLabel1.getText().equals("Save")){
+        rg.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
+        if (srg.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "VLDR" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                        rg.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         rg.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rg.setText("0.00");calc_total();}
+        }else{rg.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srgActionPerformed
 
     private void srhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srhActionPerformed
+       if (jLabel1.getText().equals("Save")){
+        rh.setEnabled(true);
+        
+        }else if (jLabel1.getText().equals("Update")){
         if (srh.isSelected()==true){
         try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT Cost FROM tbl_cost WHERE Test = '" + "TPHA" + "'");
                     rs = (ResultSet) pst.executeQuery();
                     if (rs.next()){
+                                rh.setEnabled(false);
                         //String address = rs.getString("Number_Street");
                         rh.setText(rs.getString("Cost"));calc_total();
                     }else{
                     
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rh.setText("0.00");calc_total();}
+        }else{rh.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srhActionPerformed
 
     private void sriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sriActionPerformed
@@ -6370,6 +6433,93 @@ clear_app();
     private void CFirstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CFirstMouseClicked
          CFirst.setText("");
     }//GEN-LAST:event_CFirstMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if (jLabel1.getText().equals("Update")){
+        jLabel1.setText("Save");
+        
+        }else if (jLabel1.getText().equals("Save")){
+        //HIV
+        if(sra.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"HIV"+"'");
+                pst.setString(1, ra.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{ra.setText("0.00");}
+        
+        //TB
+        if(srb.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"TB"+"'");
+                pst.setString(1, rb.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{}
+        
+         //TB Heart
+        if(src.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"Heart"+"'");
+                pst.setString(1, rc.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{rc.setText("0.00");}
+        
+         //Blood 
+        if(srd.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"Blood"+"'");
+                pst.setString(1, rd.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{rd.setText("0.00");}
+        
+         //TB Malaria
+        if(sre.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"Malaria"+"'");
+                pst.setString(1, re.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{re.setText("0.00");}
+        
+         //TB Liver
+        if(srf.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"Liver"+"'");
+                pst.setString(1, rf.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{rf.setText("0.00");}
+        
+         //TB VLDR
+        if(srg.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"VLDR"+"'");
+                pst.setString(1, rg.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{rg.setText("0.00");}
+        
+         //TB TPHA
+        if(srh.isSelected()==true){
+        try{
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_cost SET Cost=? WHERE Test = '"+"TPHA"+"'");
+                pst.setString(1, rh.getText());
+                pst.executeUpdate();
+        }catch(SQLException e){JOptionPane.showMessageDialog(null, e);}
+        }else{rh.setText("0.00");}
+        jLabel1.setText("Update");
+        clear_receipt();
+        }
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void rclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rclearActionPerformed
+        clear_receipt();
+
+    }//GEN-LAST:event_rclearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -6545,6 +6695,7 @@ clear_app();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
