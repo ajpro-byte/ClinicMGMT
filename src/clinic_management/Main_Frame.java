@@ -40,7 +40,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 /**
  *
- * @author MIS.Hard ware
+ * @author MIS.Hardware
  */
 public class Main_Frame extends javax.swing.JFrame {
 
@@ -404,7 +404,7 @@ public class Main_Frame extends javax.swing.JFrame {
      public void clear_avail(){
      AID1.setText("[Click to Generate Number]");
      ADate.setDate(null);
-     Atime.setText("");
+     Atime.setSelectedItem("7:00 AM");
      Aremarks.setText("");
      }
      
@@ -416,14 +416,15 @@ public class Main_Frame extends javax.swing.JFrame {
      assex.setText("");
      asmarital.setText("");
      asblod.setText("");
-     asa.setText("");
-     asb.setText("");
-     asc.setText("");
+     asa.setSelectedItem("Negative");
+     asb.setSelectedItem("Negative");
+     asc.setSelectedItem("Negative");
      asd.setText("");
-     ase.setText("");
-     asf.setText("");
-     asg.setText("");
-     ash.setText("");
+     ase.setSelectedItem("Negative");
+     asf.setSelectedItem("Negative");
+     asg.setSelectedItem("Negative");
+     ash.setSelectedItem("Negative");
+    
      asseal.setText("");
      }
      
@@ -1025,13 +1026,6 @@ public class Main_Frame extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         asmarital = new javax.swing.JTextField();
-        asa = new javax.swing.JTextField();
-        asb = new javax.swing.JTextField();
-        asc = new javax.swing.JTextField();
-        ase = new javax.swing.JTextField();
-        asf = new javax.swing.JTextField();
-        asg = new javax.swing.JTextField();
-        ash = new javax.swing.JTextField();
         jLabel65 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         asno = new javax.swing.JCheckBox();
@@ -1042,6 +1036,13 @@ public class Main_Frame extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel69 = new javax.swing.JLabel();
         aswalkin = new javax.swing.JCheckBox();
+        asa = new javax.swing.JComboBox();
+        asc = new javax.swing.JComboBox();
+        asb = new javax.swing.JComboBox();
+        ase = new javax.swing.JComboBox();
+        ash = new javax.swing.JComboBox();
+        asf = new javax.swing.JComboBox();
+        asg = new javax.swing.JComboBox();
         Client_List = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_client_list = new javax.swing.JTable();
@@ -1097,9 +1098,9 @@ public class Main_Frame extends javax.swing.JFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         Atable = new javax.swing.JTable();
         jLabel80 = new javax.swing.JLabel();
-        Atime = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         asearch = new javax.swing.JTextField();
+        Atime = new javax.swing.JComboBox();
         Checkup = new javax.swing.JPanel();
         serv = new javax.swing.JPanel();
         payment = new javax.swing.JPanel();
@@ -2725,55 +2726,6 @@ public class Main_Frame extends javax.swing.JFrame {
         });
         Service.add(asmarital, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 110, -1));
 
-        asa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asaActionPerformed(evt);
-            }
-        });
-        Service.add(asa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 180, -1));
-
-        asb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asbActionPerformed(evt);
-            }
-        });
-        Service.add(asb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 180, -1));
-
-        asc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ascActionPerformed(evt);
-            }
-        });
-        Service.add(asc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 180, -1));
-
-        ase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aseActionPerformed(evt);
-            }
-        });
-        Service.add(ase, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 190, -1));
-
-        asf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asfActionPerformed(evt);
-            }
-        });
-        Service.add(asf, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 190, -1));
-
-        asg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asgActionPerformed(evt);
-            }
-        });
-        Service.add(asg, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 190, -1));
-
-        ash.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ashActionPerformed(evt);
-            }
-        });
-        Service.add(ash, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 190, -1));
-
         jLabel65.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel65.setText("Examine following Medical Conditions");
@@ -2847,6 +2799,27 @@ public class Main_Frame extends javax.swing.JFrame {
             }
         });
         Service.add(aswalkin, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 70, 200, -1));
+
+        asa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(asa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 180, -1));
+
+        asc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(asc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 180, -1));
+
+        asb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(asb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 180, -1));
+
+        ase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(ase, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 180, -1));
+
+        ash.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(ash, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, 180, -1));
+
+        asf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(asf, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 180, -1));
+
+        asg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
+        Service.add(asg, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 180, -1));
 
         Main_Frame.add(Service, "card6");
 
@@ -3090,12 +3063,12 @@ public class Main_Frame extends javax.swing.JFrame {
         sarem.setText("Show Removed");
         sarem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         sarem.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 saremAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         sarem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3239,9 +3212,6 @@ public class Main_Frame extends javax.swing.JFrame {
         jLabel80.setText("Availability Number:");
         Avail.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, -1, -1));
 
-        Atime.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Avail.add(Atime, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, 130, 30));
-
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton6.setText("Clear");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -3258,6 +3228,9 @@ public class Main_Frame extends javax.swing.JFrame {
             }
         });
         Avail.add(asearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 220, 30));
+
+        Atime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM" }));
+        Avail.add(Atime, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 150, 130, 30));
 
         Main_Frame.add(Avail, "card9");
 
@@ -3498,7 +3471,7 @@ public class Main_Frame extends javax.swing.JFrame {
 
         acctype1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         acctype1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acctype1.setText("                                                                                                                                                                    ");
+        acctype1.setText("                                                                                                                                                                               ");
         jToolBar2.add(acctype1);
 
         acctype2.setBackground(new java.awt.Color(102, 102, 102));
@@ -4629,34 +4602,6 @@ if(user.getText().contains("Please Login")){
         // TODO add your handling code here:
     }//GEN-LAST:event_asmaritalActionPerformed
 
-    private void asaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asaActionPerformed
-
-    private void asbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asbActionPerformed
-
-    private void ascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ascActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ascActionPerformed
-
-    private void aseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aseActionPerformed
-
-    private void asfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asfActionPerformed
-
-    private void asgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asgActionPerformed
-
-    private void ashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ashActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ashActionPerformed
-
     private void asdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_asdActionPerformed
@@ -4698,7 +4643,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                     pst = (PreparedStatement) conn.prepareStatement(sql11);
                     pst.setString(1,AID1.getText());
                     pst.setString(2, st.format(ADate.getDate()));
-                    pst.setString(3,Atime.getText());
+                    pst.setString(3,(String)Atime.getSelectedItem());
                     pst.setString(4,Aremarks.getText());
                     int add = pst.executeUpdate();
                             if(add!=0){
@@ -5252,7 +5197,7 @@ clear_app();
             //String Remarks  = model.getValueAt(z,4).toString();
             AID1.setText(model.getValueAt(z,0).toString());
             //ADate.setDate(st.format(Remarks));
-            Atime.setText(model.getValueAt(z,2).toString());
+            Atime.setSelectedItem(model.getValueAt(z,2).toString());
             Aremarks.setText(model.getValueAt(z,3).toString());
            // jButton15.setText("Update");
         }else if (p == 1){
@@ -5600,14 +5545,14 @@ clear_app();
              para.put("address", asaddress.getText());
              para.put("blood type", asblod.getText());
              para.put("datetime", s_time.getText() +" "+ s_date.getText());
-             para.put("a", asa.getText());
-             para.put("b", asb.getText());
-             para.put("c", asc.getText());
+             para.put("a", asa.getSelectedItem());
+             para.put("b", asb.getSelectedItem());
+             para.put("c", asc.getSelectedItem());
              para.put("d", asd.getText());
-             para.put("e", ase.getText());
-             para.put("f", asf.getText());
-             para.put("g", asg.getText());
-             para.put("h", ash.getText());
+             para.put("e", ase.getSelectedItem());
+             para.put("f", asf.getSelectedItem());
+             para.put("g", asg.getSelectedItem());
+             para.put("h", ash.getSelectedItem());
              para.put("if","Yes");
             JasperPrint jp = JasperFillManager.fillReport(jr,para,connn);
             JasperPrintManager.printReport(jp, true);
@@ -5659,7 +5604,8 @@ clear_app();
         }
                                 }}
                             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
-            }else if(p==1){
+            }else if(p==
+                    1){
              if (aswalkin.isSelected()==true){
                refresh_csalist();
         }else{
@@ -5701,14 +5647,14 @@ clear_app();
              para.put("address", asaddress.getText());
              para.put("blood type", asblod.getText());
              para.put("datetime", s_time.getText() +" "+ s_date.getText());
-             para.put("a", asa.getText());
-             para.put("b", asb.getText());
-             para.put("c", asc.getText());
+             para.put("a", asa.getSelectedItem());
+             para.put("b", asb.getSelectedItem());
+             para.put("c", asc.getSelectedItem());
              para.put("d", asd.getText());
-             para.put("e", ase.getText());
-             para.put("f", asf.getText());
-             para.put("g", asg.getText());
-             para.put("h", ash.getText());
+             para.put("e", ase.getSelectedItem());
+             para.put("f", asf.getSelectedItem());
+             para.put("g", asg.getSelectedItem());
+             para.put("h", ash.getSelectedItem());
              para.put("if","No");
             JasperPrint jp = JasperFillManager.fillReport(jr,para,connn);
             JasperPrintManager.printReport(jp, true);
@@ -6384,7 +6330,7 @@ clear_app();
     private javax.swing.JPanel Addacc;
     private javax.swing.JTextArea Aremarks;
     private javax.swing.JTable Atable;
-    private javax.swing.JTextField Atime;
+    private javax.swing.JComboBox Atime;
     private javax.swing.JPanel Avail;
     private javax.swing.JComboBox CBMedical;
     private javax.swing.JTextField CCity;
@@ -6439,18 +6385,18 @@ clear_app();
     private javax.swing.JLabel address1;
     private javax.swing.JLabel adminid;
     private javax.swing.JComboBox arole1;
-    private javax.swing.JTextField asa;
+    private javax.swing.JComboBox asa;
     private javax.swing.JTextField asaddress;
-    private javax.swing.JTextField asb;
+    private javax.swing.JComboBox asb;
     private javax.swing.JTextField asblod;
-    private javax.swing.JTextField asc;
+    private javax.swing.JComboBox asc;
     private javax.swing.JTextField asd;
     private javax.swing.JTextField asdate;
-    private javax.swing.JTextField ase;
+    private javax.swing.JComboBox ase;
     private javax.swing.JTextField asearch;
-    private javax.swing.JTextField asf;
-    private javax.swing.JTextField asg;
-    private javax.swing.JTextField ash;
+    private javax.swing.JComboBox asf;
+    private javax.swing.JComboBox asg;
+    private javax.swing.JComboBox ash;
     private javax.swing.JTextField asid;
     private javax.swing.JTextField asmarital;
     private javax.swing.JTextField asname;
