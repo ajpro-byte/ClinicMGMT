@@ -4630,9 +4630,28 @@ JOptionPane.showMessageDialog(null,"System error please check");
     }//GEN-LAST:event_AID2MouseClicked
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-     
-     
+        
+        if(AID1.getText().equals("[Click to Generate Number]")){
+             JOptionPane.showMessageDialog(null, "Please Generate ID First!");
+        }else{
+                    SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
+                    String date1 = sdf.format(ADate.getDate());
+                    // availablefromT.setText(date);     
+                    // JOptionPane.showMessageDialog(null, "date"+date);
+
+    
        try{
+           
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_availabilty WHERE Date= '" + date1 + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String Time = rs.getString("Time");
+                    if (Atime.getSelectedItem().equals(Time)){
+                        JOptionPane.showMessageDialog(null, "Error Saving!! Time from the date selected already exist");
+                    
+                    }else{
+                     
+           
             SimpleDateFormat st = new SimpleDateFormat("MMM-dd-yyyy");
             //pst.setString(2, st.format(ADate.getDate()));
             if (AID1.getText().equals("[Click to Generate Number]")){
@@ -4654,10 +4673,12 @@ JOptionPane.showMessageDialog(null,"System error please check");
             
             }
                     
+                    }
+                    }
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
            
        
-        
+        }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
