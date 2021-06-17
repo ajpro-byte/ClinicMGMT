@@ -5597,12 +5597,38 @@ clear_app();
               pst.executeUpdate();
               
             if (aswalkin.isSelected()==true){
-                    refresh_csalist();
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact1 = rs.getString("Contact");
+                        String member = rs.getString("Member");
+                        
+                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,AccStat) values (?,?,?,?,?,?,?,?,?,?)";
+                        
+                        pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
 
-            }else{
-            
-            
-                            
+                        pst.setString(1, asid.getText());
+                        pst.setString(1, member);
+                        pst.setString(1, asname.getText());
+                        pst.setString(1, s_date.getText());
+                        pst.setString(1, s_time.getText());
+                        pst.setString(2, "N/A");
+                        pst.setString(2, "WALKIN");
+                        pst.setString(2, contact1);
+                        pst.setString(2, s_date.getText());
+                        pst.setString(2, "Served");
+                        
+                        int add = pst.executeUpdate();
+
+                            if(add!=0){
+                                JOptionPane.showMessageDialog(null,"WALKIN Client Served");
+                                 refresh_csalist();
+                            }
+
+                        
+                    }
+
+            }else{             
             JFrame frame = new JFrame();
             String[] options = new String[2];
             options[0] = new String("Remove from list");
