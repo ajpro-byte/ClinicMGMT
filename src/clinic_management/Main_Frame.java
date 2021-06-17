@@ -4636,6 +4636,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
         }else{
                     SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
                     String date1 = sdf.format(ADate.getDate());
+                    
                     // availablefromT.setText(date);     
                     // JOptionPane.showMessageDialog(null, "date"+date);
 
@@ -4915,11 +4916,24 @@ JOptionPane.showMessageDialog(null,"System error please check");
 
     private void sasaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sasaveActionPerformed
         
-       if (said.getText().equals("")){ 
+      
+        
+        if (said.getText().equals("")){ 
            
        }else{
         try{
+            
+            
         if (sasave.getText().equals("SAVE")){
+            
+             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_appointment WHERE Date= '" + sadate.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String Time = rs.getString("Time");
+                    if (satime1.getText().equals(Time)){
+                        JOptionPane.showMessageDialog(null, "Error Saving!! Time from the date selected already set to other client");
+                    
+                    }else{
              if (btngrpapp2.isSelected() == true && btngrpapp.isSelected() == false){
              
         String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -4995,7 +5009,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                                 JOptionPane.showMessageDialog(null,"Appointment set failed! Please Checkk");
                             }
                  
-             }               
+             }}}               
                             
         }else  if (sasave.getText().equals("UPDATE")){
             
@@ -5054,7 +5068,6 @@ JOptionPane.showMessageDialog(null,"System error please check");
         }
            
         }
-        
         }catch(Exception e){JOptionPane.showMessageDialog(null,"Client schedule duplication is not valid!");}}
     }//GEN-LAST:event_sasaveActionPerformed
 
