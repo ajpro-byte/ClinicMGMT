@@ -4728,6 +4728,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql1);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
+            aswalkin.setSelected(false);
             
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -6436,7 +6437,7 @@ clear_app();
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         if(acctype.getText().equals("User")){
-        jLabel1.setText("Invalid user field!!");
+            JOptionPane.showMessageDialog(null, "Invalid user field!!");
         }else{
         if (jLabel1.getText().equals("Update")){
         jLabel1.setText("Save");

@@ -28,9 +28,9 @@ Connection conn;
         initComponents();
                //  conn = (Connection) MysqlConnection.ConnectDB();
                conn = (Connection) clinic_management.MysqlConnection.ConnectDB();
-         Info.setVisible(true);
-                security.setVisible(false);
-                newpass.setVisible(false);
+//         Info.setVisible(true);
+//                security.setVisible(false);
+//                newpass.setVisible(false);
                 refresh_admin();
                  seticon();
     }
@@ -42,28 +42,28 @@ Connection conn;
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
-            tbl_list.setModel(DbUtils.resultSetToTableModel(rs));
+            tbl_list3.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
      
-     
-     public void refresh_user() {
+    // refresh_user()
+    
+ public void refresh_user() {
         try {
             //DateAdded,Supplier,ProductID,Description,Category,Quantity,Value,Price,Sale
             String sql = "SELECT AccountID,Name FROM tbl_user";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             
-            tbl_list.setModel(DbUtils.resultSetToTableModel(rs));
+            tbl_list3.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,6 +117,8 @@ Connection conn;
         newpass1 = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
+
+        setUndecorated(true);
 
         jPanel7.setLayout(new java.awt.CardLayout());
 
@@ -378,6 +380,7 @@ Connection conn;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -391,10 +394,10 @@ Connection conn;
 
     private void tbl_list3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_list3MouseClicked
         // TODO add your handling code here:
-        int z = tbl_list.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tbl_list.getModel();
-        AccID.setText(model.getValueAt(z, 0).toString());
-        AccName.setText(model.getValueAt(z, 1).toString());
+        int z = tbl_list3.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tbl_list3.getModel();
+        AccID3.setText(model.getValueAt(z, 0).toString());
+        AccName3.setText(model.getValueAt(z, 1).toString());
     }//GEN-LAST:event_tbl_list3MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -404,13 +407,13 @@ Connection conn;
         try{
             String sql = "SELECT * FROM tbl_admin where AccountID =? and Name=?";
             pst = (PreparedStatement) conn.prepareStatement(sql);
-            pst.setString(1, AccID.getText());
-            pst.setString(2, AccName.getText());
+            pst.setString(1, AccID3.getText());
+            pst.setString(2, AccName3.getText());
 
             rs = pst.executeQuery();
             if (rs.next()) {
 
-                pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_admin WHERE AccountID= '" + AccID.getText() + "' and Name= '" + AccName.getText() + "' ");
+                pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_admin WHERE AccountID= '" + AccID3.getText() + "' and Name= '" + AccName3.getText() + "' ");
                 rs = pst.executeQuery();
                 if (rs.next()) {
                     String add1 = rs.getString("Q1");
@@ -421,7 +424,7 @@ Connection conn;
                     nq3.setText(add3);
 
                 }
-                Info.setVisible(false);
+                Info3.setVisible(false);
                 security.setVisible(true);
                 newpass.setVisible(false);
                 key.setText("Admin Account Security");
@@ -429,13 +432,13 @@ Connection conn;
 
                 String sql1 = "SELECT * FROM tbl_user where AccountID =? and Name=?";
                 pst = (PreparedStatement) conn.prepareStatement(sql1);
-                pst.setString(1, AccID.getText());
-                pst.setString(2, AccName.getText());
+                pst.setString(1, AccID3.getText());
+                pst.setString(2, AccName3.getText());
 
                 rs = pst.executeQuery();
                 if (rs.next()) {
 
-                    pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_user WHERE AccountID= '" + AccID.getText() + "' and Name= '" + AccName.getText() + "' ");
+                    pst = (PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_user WHERE AccountID= '" + AccID3.getText() + "' and Name= '" + AccName3.getText() + "' ");
                     rs = pst.executeQuery();
                     if (rs.next()) {
                         String add1 = rs.getString("Q1");
@@ -446,7 +449,7 @@ Connection conn;
                         nq3.setText(add3);
 
                     }
-                    Info.setVisible(false);
+                    Info3.setVisible(false);
                     security.setVisible(true);
                     newpass.setVisible(false);
                     key.setText("User Account Security");
@@ -462,7 +465,7 @@ Connection conn;
 
     private void select3PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_select3PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
-        if (select.getSelectedItem().equals("Admin")){
+        if (select3.getSelectedItem().equals("Admin")){
             refresh_admin();
         }else{
             refresh_user();
@@ -477,7 +480,7 @@ Connection conn;
             try{
                 String sql = "SELECT * FROM tbl_admin where AccountID =? and Q1=? and A1=?";
                 pst = (PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, AccID.getText());
+                pst.setString(1, AccID3.getText());
                 pst.setString(2, nq1.getText());
                 pst.setString(3, na1.getText());
 
@@ -486,7 +489,7 @@ Connection conn;
                     //q1
                     String sq2 = "SELECT * FROM tbl_admin where AccountID =? and Q2=? and A2=?";
                     pst = (PreparedStatement) conn.prepareStatement(sq2);
-                    pst.setString(1, AccID.getText());
+                    pst.setString(1, AccID3.getText());
                     pst.setString(2, nq2.getText());
                     pst.setString(3, na2.getText());
 
@@ -495,13 +498,13 @@ Connection conn;
                         //q2
                         String sq3 = "SELECT * FROM tbl_admin where AccountID =? and Q3=? and A3=?";
                         pst = (PreparedStatement) conn.prepareStatement(sq3);
-                        pst.setString(1, AccID.getText());
+                        pst.setString(1, AccID3.getText());
                         pst.setString(2, nq3.getText());
                         pst.setString(3, na3.getText());
 
                         rs = pst.executeQuery();
                         if (rs.next()) {
-                            Info.setVisible(false);
+                            Info3.setVisible(false);
                             security.setVisible(false);
                             newpass.setVisible(true);
                         }else{
@@ -525,7 +528,7 @@ Connection conn;
             try{
                 String sql = "SELECT * FROM tbl_user where AccountID =? and Q1=? and A1=?";
                 pst = (PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, AccID.getText());
+                pst.setString(1, AccID3.getText());
                 pst.setString(2, nq1.getText());
                 pst.setString(3, na1.getText());
 
@@ -534,7 +537,7 @@ Connection conn;
                     //q1
                     String sq2 = "SELECT * FROM tbl_user where AccountID =? and Q2=? and A2=?";
                     pst = (PreparedStatement) conn.prepareStatement(sq2);
-                    pst.setString(1, AccID.getText());
+                    pst.setString(1, AccID3.getText());
                     pst.setString(2, nq2.getText());
                     pst.setString(3, na2.getText());
 
@@ -543,13 +546,13 @@ Connection conn;
                         //q2
                         String sq3 = "SELECT * FROM tbl_user where AccountID =? and Q3=? and A3=?";
                         pst = (PreparedStatement) conn.prepareStatement(sq3);
-                        pst.setString(1, AccID.getText());
+                        pst.setString(1, AccID3.getText());
                         pst.setString(2, nq3.getText());
                         pst.setString(3, na3.getText());
 
                         rs = pst.executeQuery();
                         if (rs.next()) {
-                            Info.setVisible(false);
+                            Info3.setVisible(false);
                             security.setVisible(false);
                             newpass.setVisible(true);
                         }else{
@@ -585,14 +588,14 @@ Connection conn;
             try{
                 String sql = "SELECT * FROM tbl_admin where AccountID =? and Name=? and Username =?";
                 pst = (PreparedStatement) conn.prepareStatement(sql);
-                pst.setString(1, AccID.getText());
-                pst.setString(2, AccName.getText());
+                pst.setString(1, AccID3.getText());
+                pst.setString(2, AccName3.getText());
                 pst.setString(3, uname.getText());
 
                 rs = pst.executeQuery();
                 if (rs.next()) {
 
-                    pst=(com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_admin SET Password=? WHERE Username='"+uname.getText()+"' and AccountID='"+AccID.getText()+"'  and Name='"+AccName.getText()+"'");
+                    pst=(com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_admin SET Password=? WHERE Username='"+uname.getText()+"' and AccountID='"+AccID3.getText()+"'  and Name='"+AccName3.getText()+"'");
 
                     pst.setString(1,newpass1.getText());
 
@@ -600,7 +603,7 @@ Connection conn;
 
                     if (admin_update!=0){
                         try{
-                            jButton3.setText("Saving...");
+                            jButton6.setText("Saving...");
                             Thread.sleep(40);
                             // voice.speak("Admin Account New Password Saved Successfully");
                             JOptionPane.showMessageDialog(null, "Admin Account New Password Saved");
@@ -614,14 +617,14 @@ Connection conn;
 
                     String sq2 = "SELECT * FROM tbl_user where AccountID =? and Name=? and Username =?";
                     pst = (PreparedStatement) conn.prepareStatement(sq2);
-                    pst.setString(1, AccID.getText());
-                    pst.setString(2, AccName.getText());
+                    pst.setString(1, AccID3.getText());
+                    pst.setString(2, AccName3.getText());
                     pst.setString(3, uname.getText());
 
                     rs = pst.executeQuery();
                     if (rs.next()) {
 
-                        pst=(com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_user SET Password=? WHERE Username='"+uname.getText()+"' and AccountID='"+AccID.getText()+"'  and Name='"+AccName.getText()+"'");
+                        pst=(com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_user SET Password=? WHERE Username='"+uname.getText()+"' and AccountID='"+AccID3.getText()+"'  and Name='"+AccName3.getText()+"'");
 
                         pst.setString(1,newpass1.getText());
 
@@ -629,7 +632,7 @@ Connection conn;
 
                         if (admin_update1!=0){
                             try{
-                                jButton3.setText("Saving...");
+                                jButton6.setText("Saving...");
                                 Thread.sleep(40);
                                 // voice.speak("User Account New Password Saved Successfully");
                                 JOptionPane.showMessageDialog(null, "User Account New Password Saved");
@@ -697,17 +700,8 @@ Connection conn;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AccID;
-    private javax.swing.JTextField AccID1;
-    private javax.swing.JTextField AccID2;
     private javax.swing.JTextField AccID3;
-    private javax.swing.JTextField AccName;
-    private javax.swing.JTextField AccName1;
-    private javax.swing.JTextField AccName2;
     private javax.swing.JTextField AccName3;
-    private javax.swing.JPanel Info;
-    private javax.swing.JPanel Info1;
-    private javax.swing.JPanel Info2;
     private javax.swing.JPanel Info3;
     private javax.swing.JLabel contact13;
     private javax.swing.JLabel contact14;
@@ -718,16 +712,9 @@ Connection conn;
     private javax.swing.JLabel contact21;
     private javax.swing.JLabel contact23;
     private javax.swing.JLabel contact24;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -735,27 +722,10 @@ Connection conn;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel key;
     private javax.swing.JTextField na1;
@@ -768,13 +738,7 @@ Connection conn;
     private javax.swing.JLabel nq3;
     private javax.swing.JPasswordField repeatepass;
     private javax.swing.JPanel security;
-    private javax.swing.JComboBox select;
-    private javax.swing.JComboBox select1;
-    private javax.swing.JComboBox select2;
     private javax.swing.JComboBox select3;
-    private javax.swing.JTable tbl_list;
-    private javax.swing.JTable tbl_list1;
-    private javax.swing.JTable tbl_list2;
     private javax.swing.JTable tbl_list3;
     private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
