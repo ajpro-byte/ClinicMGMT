@@ -26,12 +26,13 @@ Connection conn;
      */
     public Forgot() {
         initComponents();
-        //         conn = (Connection) MysqlConnection.ConnectDB();
-//         Info.setVisible(true);
-//                security.setVisible(false);
-//                newpass.setVisible(false);
-//                refresh_admin();
-//                 seticon();
+               //  conn = (Connection) MysqlConnection.ConnectDB();
+               conn = (Connection) clinic_management.MysqlConnection.ConnectDB();
+         Info.setVisible(true);
+                security.setVisible(false);
+                newpass.setVisible(false);
+                refresh_admin();
+                 seticon();
     }
     
     public void refresh_admin() {
@@ -777,4 +778,7 @@ Connection conn;
     private javax.swing.JTable tbl_list3;
     private javax.swing.JTextField uname;
     // End of variables declaration//GEN-END:variables
+private void seticon() {
+      setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Clinic.png")));
+    }
 }

@@ -1,0 +1,30 @@
+weekly yearly monthly report
+ - service drop down positve negative	X
+ - update ammount X
+ - time conlfict saving X
+ - time picker		X
+Forgot password 
+
+serve stat for walkin X
+
+
+ String sql = "Insert into tbl_clientinfo (ClientID, Member, Lname, MName, Fname, Number_Street, City, State, Zipcode, Email, Gender, Marital_State, Home, Work, Cell, Spouse_Home, Spouse_Work, Spouse_Cell, EC_Name, EC_Contact, Refer, Physician, If_Yes, Conditions) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        
+                        pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
+
+                        pst.setString(1, CID.getText());
+                        pst.setString(2, "Member");
+                        pst.setSt 
+                        int add = pst.executeUpdate();
+
+                            if(add!=0){
+                                JOptionPane.showMessageDialog(null,"New member group successfully saved!");
+                                clear_client();
+                            }
+
+ 
+                        int add = pst.executeUpdate();
+                            if(add!=0){
+                                JOptionPane.showMessageDialog(null,"New member group successfully saved!");
+                                clear_client();
+                            }

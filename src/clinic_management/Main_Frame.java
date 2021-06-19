@@ -6142,10 +6142,10 @@ clear_app();
                         ra.setText(rs.getString("Cost"));
                         calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{ra.setText("0.00");calc_total();}
+        }else if(sra.isSelected()==false){ra.setText("0.00");calc_total();}
         }
     }//GEN-LAST:event_sraActionPerformed
 
@@ -6165,10 +6165,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rb.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rb.setText("0.00");calc_total();}}
+        }else if(srb.isSelected()==false){rb.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srbActionPerformed
 
     private void srcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srcActionPerformed
@@ -6185,10 +6185,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rc.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rc.setText("0.00");calc_total();}}
+        }else if(src.isSelected()==false){rc.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srcActionPerformed
 
     private void srdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srdActionPerformed
@@ -6204,10 +6204,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rd.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rd.setText("0.00");calc_total();}}
+        }else if(src.isSelected()==false){rd.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srdActionPerformed
 
     private void sreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sreActionPerformed
@@ -6226,10 +6226,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         re.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{re.setText("0.00");calc_total();}}
+        }else if(src.isSelected()==false){re.setText("0.00");calc_total();}}
     }//GEN-LAST:event_sreActionPerformed
 
     private void srfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srfActionPerformed
@@ -6246,10 +6246,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rf.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rf.setText("0.00");calc_total();}}
+        }else if(src.isSelected()==false){rf.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srfActionPerformed
 
     private void srgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srgActionPerformed
@@ -6266,10 +6266,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rg.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rg.setText("0.00");calc_total();}}
+        }else if (src.isSelected()==false){rg.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srgActionPerformed
 
     private void srhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srhActionPerformed
@@ -6286,10 +6286,10 @@ clear_app();
                         //String address = rs.getString("Number_Street");
                         rh.setText(rs.getString("Cost"));calc_total();
                     }else{
-                    
+                    JOptionPane.showMessageDialog(null,"System error encountered please check!");
                     }
            }catch(SQLException e){ JOptionPane.showMessageDialog(null,e);}
-        }else{rh.setText("0.00");calc_total();}}
+        }else if (src.isSelected()==false){rh.setText("0.00");calc_total();}}
     }//GEN-LAST:event_srhActionPerformed
 
     private void sriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sriActionPerformed
@@ -6435,6 +6435,9 @@ clear_app();
     }//GEN-LAST:event_CFirstMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if(acctype.getText().equals("User")){
+        jLabel1.setText("Invalid user field!!");
+        }else{
         if (jLabel1.getText().equals("Update")){
         jLabel1.setText("Save");
         
@@ -6512,7 +6515,7 @@ clear_app();
         }else{rh.setText("0.00");}
         jLabel1.setText("Update");
         clear_receipt();
-        }
+        }}
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
