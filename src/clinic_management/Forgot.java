@@ -28,9 +28,9 @@ Connection conn;
         initComponents();
                //  conn = (Connection) MysqlConnection.ConnectDB();
                conn = (Connection) clinic_management.MysqlConnection.ConnectDB();
-//         Info.setVisible(true);
-//                security.setVisible(false);
-//                newpass.setVisible(false);
+         Info3.setVisible(true);
+                security.setVisible(false);
+                newpass.setVisible(false);
                 refresh_admin();
                  seticon();
     }
