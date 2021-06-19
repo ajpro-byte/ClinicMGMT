@@ -6442,6 +6442,36 @@ clear_app();
         if (jLabel1.getText().equals("Update")){
         jLabel1.setText("Save");
         
+        ra.setText("0.00");
+        rb.setText("0.00");
+        rc.setText("0.00");
+        rd.setText("0.00");
+        re.setText("0.00");
+        rf.setText("0.00");
+        rg.setText("0.00");
+        rh.setText("0.00");
+        ri.setText("0.00");
+        ri.setEnabled(false);
+        rtotal.setText("0.00");
+        ra.setEnabled(false);
+        rb.setEnabled(false);
+        rc.setEnabled(false);
+        rd.setEnabled(false);
+        re.setEnabled(false);
+        rf.setEnabled(false);
+        rg.setEnabled(false);
+        rh.setEnabled(false);
+        
+        sra.setSelected(false);
+        srb.setSelected(false);
+        src.setSelected(false);
+        srd.setSelected(false);
+        sre.setSelected(false);
+        srf.setSelected(false);
+        srg.setSelected(false);
+        srh.setSelected(false);
+        sri.setSelected(false);
+        
         }else if (jLabel1.getText().equals("Save")){
         //HIV
         if(sra.isSelected()==true){
