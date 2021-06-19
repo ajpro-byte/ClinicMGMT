@@ -4666,9 +4666,10 @@ JOptionPane.showMessageDialog(null,"System error please check");
                     if (Atime.getSelectedItem().equals(Time)){
                         JOptionPane.showMessageDialog(null, "Error Saving!! Time from the date selected already exist");
                     
+                    }
                     }else{
-                     
-           
+                    
+                    
             SimpleDateFormat st = new SimpleDateFormat("MMM-dd-yyyy");
             //pst.setString(2, st.format(ADate.getDate()));
             if (AID1.getText().equals("[Click to Generate Number]")){
@@ -4689,8 +4690,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                             }else{JOptionPane.showMessageDialog(null, "Error schedule saving!!");}
             
             }
-                    
-                    }
+                        
                     }
         }catch(Exception e){JOptionPane.showMessageDialog(null, e);}
            
