@@ -4652,11 +4652,8 @@ JOptionPane.showMessageDialog(null,"System error please check");
         }else{
                     SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
                     String date1 = sdf.format(ADate.getDate());
-                    
                     // availablefromT.setText(date);     
                     // JOptionPane.showMessageDialog(null, "date"+date);
-
-    
        try{
            
             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_availabilty WHERE Date= '" + date1 + "'");
@@ -4665,6 +4662,22 @@ JOptionPane.showMessageDialog(null,"System error please check");
                         String Time = rs.getString("Time");
                     if (Atime.getSelectedItem().equals(Time)){
                         JOptionPane.showMessageDialog(null, "Error Saving!! Time from the date selected already exist");
+                    
+                    }else{
+                    
+                    String sql11 = "INSERT INTO tbl_availabilty VALUES (?,?,?,?)";
+                    pst = (PreparedStatement) conn.prepareStatement(sql11);
+                    pst.setString(1,AID1.getText());
+                    pst.setString(2, sdf.format(ADate.getDate()));
+                    pst.setString(3,(String)Atime.getSelectedItem());
+                    pst.setString(4,Aremarks.getText());
+                    int add = pst.executeUpdate();
+                            if(add!=0){
+                                clear_avail();
+                                refresh_Availabilty();
+                                JOptionPane.showMessageDialog(null, "New schedule saved successfully!!");
+                            }else{JOptionPane.showMessageDialog(null, "Error schedule saving!!");}
+                    
                     
                     }
                     }else{
