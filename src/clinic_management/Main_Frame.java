@@ -3417,6 +3417,11 @@ public class Main_Frame extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("GENERATE REPORT");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 260, 40));
 
         Main_Frame.add(RAppoint, "card14");
@@ -7053,6 +7058,67 @@ clear_app();
         jButton9.setEnabled(true);
         }
     }//GEN-LAST:event_refActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (rsel.getSelectedItem().equals("Client Served")){
+            
+            try{  
+        Connection connn = MysqlConnection.ConnectDB();
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Served.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Served.jrxml");
+            // String query = "SELECT * FROM tbl_items";
+            JRDesignQuery jrquery = new JRDesignQuery();
+            //jrquery.setText(query);
+            JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
+            jasperDesign.setQuery(jrquery);
+            HashMap para= new HashMap();
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connn);
+            JasperPrintManager.printReport(jp, true);
+            }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+            
+        }else if (rsel.getSelectedItem().equals("Appointment Rescheduled")){
+        
+           try{  
+        Connection connn = MysqlConnection.ConnectDB();
+////            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Resched.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Resched.jrxml");
+            // String query = "SELECT * FROM tbl_items";
+            JRDesignQuery jrquery = new JRDesignQuery();
+            //jrquery.setText(query);
+            JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
+            jasperDesign.setQuery(jrquery);
+            HashMap para= new HashMap();
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connn);
+            JasperPrintManager.printReport(jp, true);
+            }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+            
+        
+        }else if (rsel.getSelectedItem().equals("Appointment Removed")){
+            
+            try{  
+        Connection connn = MysqlConnection.ConnectDB();
+////            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Removed.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Removed.jrxml");
+            // String query = "SELECT * FROM tbl_items";
+            JRDesignQuery jrquery = new JRDesignQuery();
+            //jrquery.setText(query);
+            JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
+            jasperDesign.setQuery(jrquery);
+            HashMap para= new HashMap();
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connn);
+            JasperPrintManager.printReport(jp, true);
+            }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        }
+        
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
