@@ -92,8 +92,12 @@ public class Main_Frame extends javax.swing.JFrame {
                 s_time.setText(s.format(d));
 
                 SimpleDateFormat st = new SimpleDateFormat("MMM-dd-yyyy");
+                SimpleDateFormat st1 = new SimpleDateFormat("MMM");
+                SimpleDateFormat st2 = new SimpleDateFormat("yyyy");
                // SimpleDateFormat st1 = new SimpleDateFormat("MMM");
                 s_date.setText(st.format(d));
+                Month.setText(st1.format(d));
+                Year.setText(st2.format(d));
                // jLabel21.setText(st1.format(d));
                 //String today = st.format(d);
             
@@ -334,7 +338,7 @@ public class Main_Frame extends javax.swing.JFrame {
          
         try {
             
-            String sql = "SELECT * From tbl_appointment";
+            String sql = "SELECT ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved From tbl_appointment";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             satable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -351,7 +355,7 @@ public class Main_Frame extends javax.swing.JFrame {
          
         try {
             
-            String sql = "SELECT * From tbl_appointment";
+            String sql = "SELECT ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved From tbl_appointment";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -368,7 +372,7 @@ public class Main_Frame extends javax.swing.JFrame {
          
         try {
             
-            String sql = "SELECT * From tbl_appointment_removed";
+            String sql = "SELECT ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat From tbl_appointment_removed";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             satable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -794,6 +798,7 @@ public class Main_Frame extends javax.swing.JFrame {
         cbclient = new javax.swing.ButtonGroup();
         setapp = new javax.swing.ButtonGroup();
         receipt = new javax.swing.ButtonGroup();
+        report = new javax.swing.ButtonGroup();
         Main_Frame = new javax.swing.JPanel();
         Login = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -809,6 +814,8 @@ public class Main_Frame extends javax.swing.JFrame {
         type1 = new javax.swing.JComboBox();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        Month = new javax.swing.JLabel();
+        Year = new javax.swing.JLabel();
         Dashboard = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel93 = new javax.swing.JLabel();
@@ -1053,6 +1060,7 @@ public class Main_Frame extends javax.swing.JFrame {
         ash = new javax.swing.JComboBox();
         asf = new javax.swing.JComboBox();
         asg = new javax.swing.JComboBox();
+        jLabel21 = new javax.swing.JLabel();
         Client_List = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_client_list = new javax.swing.JTable();
@@ -1084,7 +1092,6 @@ public class Main_Frame extends javax.swing.JFrame {
         satime = new javax.swing.JLabel();
         sadate = new javax.swing.JTextField();
         jCheckBox3 = new javax.swing.JCheckBox();
-        jButton13 = new javax.swing.JButton();
         jLabel71 = new javax.swing.JLabel();
         satit = new javax.swing.JLabel();
         sarem = new javax.swing.JLabel();
@@ -1123,6 +1130,10 @@ public class Main_Frame extends javax.swing.JFrame {
         tbl_rm_serve = new javax.swing.JTable();
         jScrollPane12 = new javax.swing.JScrollPane();
         tbl_srv_month = new javax.swing.JTable();
+        rdmy = new javax.swing.JComboBox();
+        rsel = new javax.swing.JComboBox();
+        ref = new javax.swing.JCheckBox();
+        jButton9 = new javax.swing.JButton();
         SMS = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
@@ -1278,6 +1289,12 @@ public class Main_Frame extends javax.swing.JFrame {
         jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
         Login.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 840, 430));
+
+        Month.setText("M");
+        Login.add(Month, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 570, 60, 20));
+
+        Year.setText("y");
+        Login.add(Year, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 570, 40, 20));
 
         Main_Frame.add(Login, "card2");
 
@@ -2842,6 +2859,10 @@ public class Main_Frame extends javax.swing.JFrame {
         asg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
         Service.add(asg, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 180, -1));
 
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("jLabel21");
+        Service.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
         Main_Frame.add(Service, "card6");
 
         Client_List.setBackground(new java.awt.Color(255, 255, 255));
@@ -2989,7 +3010,7 @@ public class Main_Frame extends javax.swing.JFrame {
                 sasaveActionPerformed(evt);
             }
         });
-        Setapp.add(sasave, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 550, 90, 30));
+        Setapp.add(sasave, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 550, 120, 30));
 
         jLabel70.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel70.setText("Message to Client");
@@ -3033,7 +3054,7 @@ public class Main_Frame extends javax.swing.JFrame {
                 sasave1ActionPerformed(evt);
             }
         });
-        Setapp.add(sasave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 550, 90, 30));
+        Setapp.add(sasave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 550, 140, 30));
 
         jLabel95.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel95.setText("Member:");
@@ -3062,15 +3083,6 @@ public class Main_Frame extends javax.swing.JFrame {
             }
         });
         Setapp.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 290, 140, -1));
-
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton13.setText("Send");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        Setapp.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 550, 80, 30));
 
         jLabel71.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel71.setText("Selected ID:");
@@ -3310,6 +3322,18 @@ public class Main_Frame extends javax.swing.JFrame {
         RAppoint.setBackground(new java.awt.Color(255, 255, 255));
         RAppoint.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
+        jScrollPane14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane14MouseClicked(evt);
+            }
+        });
+
         tbl_rdasg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -3325,6 +3349,12 @@ public class Main_Frame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Client Served", jScrollPane14);
 
+        jScrollPane15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane15MouseClicked(evt);
+            }
+        });
+
         tbl_rm_serve.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -3339,6 +3369,12 @@ public class Main_Frame extends javax.swing.JFrame {
         jScrollPane15.setViewportView(tbl_rm_serve);
 
         jTabbedPane1.addTab("Appointment Rescheduled", jScrollPane15);
+
+        jScrollPane12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane12MouseClicked(evt);
+            }
+        });
 
         tbl_srv_month.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -3356,6 +3392,32 @@ public class Main_Frame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Appointment Removed", jScrollPane12);
 
         RAppoint.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 800, 520));
+
+        rdmy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rdmy.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Daily", "Monthly", "Yearly" }));
+        rdmy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdmyActionPerformed(evt);
+            }
+        });
+        RAppoint.add(rdmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 260, 40));
+
+        rsel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rsel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Client Served", "Appointment Rescheduled", "Appointment Removed" }));
+        RAppoint.add(rsel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 260, 40));
+
+        ref.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ref.setText("Enable Filtering");
+        ref.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refActionPerformed(evt);
+            }
+        });
+        RAppoint.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 50, 260, -1));
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton9.setText("GENERATE REPORT");
+        RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 260, 40));
 
         Main_Frame.add(RAppoint, "card14");
 
@@ -4814,35 +4876,37 @@ JOptionPane.showMessageDialog(null,"System error please check");
             JOptionPane.showMessageDialog(null, ex);
         }
         
-        
         try {
             
             String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
-            // astable.setModel(DbUtils.resultSetToTableModel(rs));
-
-
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
-        
         try {
             
             String sql = "SELECT * From tbl_appointment_removed where ActStat = '"+"Served"+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
             rs = pst.executeQuery();
             tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
-            // astable.setModel(DbUtils.resultSetToTableModel(rs));
-
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
         
-        }
+        
+        
+         if (ref.isSelected() == false){
+        rsel.setEnabled(false);
+        rdmy.setEnabled(false);
+        jButton9.setEnabled(false);
+        }else if (ref.isSelected() == true){
+        rsel.setEnabled(true);
+        rdmy.setEnabled(true);
+        jButton9.setEnabled(true);
+        }}
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
@@ -4946,8 +5010,6 @@ JOptionPane.showMessageDialog(null,"System error please check");
 
     private void sasaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sasaveActionPerformed
         
-      
-        
         if (said.getText().equals("")){ 
            
        }else{
@@ -4955,20 +5017,19 @@ JOptionPane.showMessageDialog(null,"System error please check");
             
             
         if (sasave.getText().equals("SAVE")){
-            
              pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_appointment WHERE Date= '" + sadate.getText() + "'");
                     rs = pst.executeQuery();
                     if (rs.next()) {
+                       // JOptionPane.showMessageDialog(null, "error sav1");
                         String Time = rs.getString("Time");
                     if (satime1.getText().equals(Time)){
                         JOptionPane.showMessageDialog(null, "Error Saving!! Time from the date selected already set to other client");
-                    
                     }else{
-             if (btngrpapp2.isSelected() == true && btngrpapp.isSelected() == false){
-             
-        String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved) VALUES (?,?,?,?,?,?,?,?,?)";
-//        Date date = sadate.getDate();
-//        String strdate = DateFormat.getDateInstance().format(date);
+                    
+                        if (btngrpapp2.isSelected() == true && btngrpapp.isSelected() == false){
+        //JOptionPane.showMessageDialog(null, "error sav");
+        String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,Month,Year) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
                             pst = (PreparedStatement) conn.prepareStatement(sql1);
                             pst.setString(1,said.getText());
                             pst.setString(2,samem.getText());
@@ -4979,7 +5040,8 @@ JOptionPane.showMessageDialog(null,"System error please check");
                             pst.setString(7,"Scheduled");
                             pst.setString(8 ,contact.getText());
                             pst.setString(9 ,s_date.getText());
-
+                            pst.setString(10 ,Month.getText());
+                            pst.setString(11 ,Year.getText());
 
                             int add = pst.executeUpdate();
                             if(add!=0){
@@ -4990,8 +5052,6 @@ JOptionPane.showMessageDialog(null,"System error please check");
                               JOptionPane.showMessageDialog(null,"New Appointment saved successfully");
                               saclietsell.setSelected(false);
                             
-                              
-                              
                             }else{
                                     sentsms();
                             refresh_appointment();
@@ -5005,7 +5065,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                                 JOptionPane.showMessageDialog(null,"Appointment set failed! Please Check");
                             }
              }else if (btngrpapp.isSelected() == true && btngrpapp2.isSelected() == false) {
-                     String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Datereserved) VALUES (?,?,?,?,?,?,?,?)";
+                     String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Cotact,Datereserved,Month,Year) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
                             pst = (PreparedStatement) conn.prepareStatement(sql1);
                             pst.setString(1,said.getText());
@@ -5016,6 +5076,87 @@ JOptionPane.showMessageDialog(null,"System error please check");
                             pst.setString(6,samessage.getText());
                             pst.setString(7,"Rescheduled");
                             pst.setString(8,s_date.getText());
+                            pst.setString(8,s_date.getText());
+                            pst.setString(9,Month.getText());
+                            pst.setString(10,Year.getText());
+
+                            int add = pst.executeUpdate();
+                            if(add!=0){
+                                if (saclietsell.isSelected() == true){
+                                     sentsms();
+                            sa_refresh_list();
+                            clear_app();
+                            saclietsell.setSelected(false);
+                            JOptionPane.showMessageDialog(null,"Rescheduled appointment saved successfully");
+                            }else{
+                                    sentsms();
+                            refresh_appointment();
+                              clear_app();
+                            saclietsell.setSelected(false);
+                            
+                           // JOptionPane.showMessageDialog(null,"Rescheduled appointment saved successfully");
+                           
+                             }
+
+                            } else{
+                                JOptionPane.showMessageDialog(null,"Appointment set failed! Please Checkk");
+                            }
+             }
+                    }
+                    }else{  
+             if (btngrpapp2.isSelected() == true && btngrpapp.isSelected() == false){
+        //JOptionPane.showMessageDialog(null, "error sav");
+        String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,Month,Year) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+                            pst = (PreparedStatement) conn.prepareStatement(sql1);
+                            pst.setString(1,said.getText());
+                            pst.setString(2,samem.getText());
+                            pst.setString(3, saname.getText());
+                            pst.setString(4,sadate.getText());
+                            pst.setString(5,satime1.getText());
+                            pst.setString(6,samessage.getText());
+                            pst.setString(7,"Scheduled");
+                            pst.setString(8 ,contact.getText());
+                            pst.setString(9 ,s_date.getText());
+                            pst.setString(10 ,Month.getText());
+                            pst.setString(11 ,Year.getText());
+
+                            int add = pst.executeUpdate();
+                            if(add!=0){
+                                if (saclietsell.isSelected() == true){
+                                     sentsms();
+                            sa_refresh_list();
+                            clear_app();
+                              JOptionPane.showMessageDialog(null,"New Appointment saved successfully");
+                              saclietsell.setSelected(false);
+                            
+                            }else{
+                                    sentsms();
+                            refresh_appointment();
+                             clear_app();
+                              //JOptionPane.showMessageDialog(null,"New Appointment saved successfully");
+                              saclietsell.setSelected(false);  
+                              
+                             }
+
+                            } else{
+                                JOptionPane.showMessageDialog(null,"Appointment set failed! Please Check");
+                            }
+             }else if (btngrpapp.isSelected() == true && btngrpapp2.isSelected() == false) {
+                     String sql1 = "INSERT INTO tbl_appointment(ClientID,Member,Fullname,Date,Time,Message,Status,Cotact,Datereserved,Month,Year) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+                            pst = (PreparedStatement) conn.prepareStatement(sql1);
+                            pst.setString(1,said.getText());
+                            pst.setString(2,samem.getText());
+                            pst.setString(3, saname.getText());
+                            pst.setString(4,sadate.getText());
+                            pst.setString(5,satime1.getText());
+                            pst.setString(6,samessage.getText());
+                            pst.setString(7,"Rescheduled");
+                            pst.setString(8,s_date.getText());
+                            pst.setString(8,s_date.getText());
+                            pst.setString(9,Month.getText());
+                            pst.setString(10,Year.getText());
 
                             int add = pst.executeUpdate();
                             if(add!=0){
@@ -5039,7 +5180,7 @@ JOptionPane.showMessageDialog(null,"System error please check");
                                 JOptionPane.showMessageDialog(null,"Appointment set failed! Please Checkk");
                             }
                  
-             }}}               
+             }}               
                             
         }else  if (sasave.getText().equals("UPDATE")){
             
@@ -5098,7 +5239,9 @@ JOptionPane.showMessageDialog(null,"System error please check");
         }
            
         }
-        }catch(Exception e){JOptionPane.showMessageDialog(null,"Client schedule duplication is not valid!");}}
+        }catch(Exception e){
+           // JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,"Client schedule duplication is not valid!");}}
     }//GEN-LAST:event_sasaveActionPerformed
 
     private void sasave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sasave1ActionPerformed
@@ -5167,52 +5310,56 @@ clear_app();
             int z = satable.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) satable.getModel();
             String ID = model.getValueAt(z,0).toString();
-            
-
+            String name = model.getValueAt(z,2).toString();
+            String mess = model.getValueAt(z,5).toString();
                 try{
-                    String sql1 = "INSERT INTO tbl_appointment_removed (ClientID, Member, Fullname, Date, Time, Message, Status, Contact, Datereserved) SELECT * FROM tbl_appointment Where ClientID = '"+ID+"'";
-            
-           pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + ID + "'");
-
-                        pst.setString(1,"Removed");
-
-                        int update = pst.executeUpdate();
-                        if (update != 0) {
+                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + ID + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, ID);
+                        pst.setString(2, member1);
+                        pst.setString(3, name);
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, mess);
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Removed");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                         int add1 = pst.executeUpdate();
+                            if(add1!=0){
+//                    pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=?, Month=?, Year=? WHERE ClientID='" + ID + "'");
+//
+//                        pst.setString(1,"Removed");
+//                        pst.setString(2,"Month");
+//                        pst.setString(3,"Year");
+//
+//                        int update = pst.executeUpdate();
+//                        if (update != 0) {
                       
                                   pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM tbl_appointment WHERE ClientID='" + ID + "'");
                                    int del11 =  pst.executeUpdate();
                                    if(del11 >0){
                                        JOptionPane.showMessageDialog(null, "Data Removed");
                                        refresh_appointment();
-                                }}
-                            }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
-             
+                                //}
+                        }}}
+                            }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}  
        }    
         }else{}
         }
-       
-        
       } catch(Exception e){
       
       }
     }//GEN-LAST:event_satableMouseClicked
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        try{
-        pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_clientinfo WHERE ClientID = '" + said.getText() + "'");
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                String Contact = rs.getString("Home");
-       SMS send = new SMS();
-       send.SendSMS("customer002", "customer002!@#", samessage.getText(), Contact, "https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");     
-       JOptionPane.showMessageDialog(null,"Message Sent to "+Contact);
-            }else {
-            
-            JOptionPane.showMessageDialog(null,"Error Sending message");
-            }
-            }catch(Exception e){JOptionPane.showMessageDialog(null,"Message sent failed");}
-    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
      if (jCheckBox3.isSelected() == true){
@@ -5502,6 +5649,7 @@ clear_app();
          int c1 = astable.getSelectedRow();
            DefaultTableModel model11 = (DefaultTableModel) astable.getModel();
             String cid = (model11.getValueAt(c1,0).toString());
+           
             //String fullname1 = (lname1+""+mname1+""+fname1);
            try{
             pst = (com.mysql.jdbc.PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement("SELECT ClientID,Fullname FROM tbl_appointment WHERE ClientID = '" + cid + "'");
@@ -5537,7 +5685,10 @@ clear_app();
         
         int c = astable.getSelectedRow();
         DefaultTableModel model1 = (DefaultTableModel) astable.getModel();
-            String id = model1.getValueAt(c,0).toString();    
+            String id = model1.getValueAt(c,0).toString(); 
+            String name = model1.getValueAt(c,2).toString(); 
+             jLabel21.setText(model1.getValueAt(c,6).toString());
+             String mess = (model1.getValueAt(c,5).toString());
         JFrame frame = new JFrame();
             String[] options = new String[2];
             options[0] = new String("Remove from list");
@@ -5545,15 +5696,43 @@ clear_app();
             int p = JOptionPane.showOptionDialog(frame.getContentPane(),"Select Option","Client Selection Option", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);
             if(p==0){
                 try{
-                    String sql1 = "INSERT INTO tbl_appointment_removed (ClientID, Member, Fullname, Date, Time, Message, Status, Contact, Datereserved) SELECT * FROM tbl_appointment Where ClientID = '"+id+"'";
+                    //String sql1 = "INSERT INTO tbl_appointment_removed (ClientID, Member, Fullname, Date, Time, Message, Status, Contact, Datereserved) SELECT * FROM tbl_appointment Where ClientID = '"+id+"'";
             
-           pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + id + "'");
-
-                        pst.setString(1,"Removed");
-
-                        int update = pst.executeUpdate();
-                        if (update != 0) {
+           //pst = (PreparedStatement) conn.prepareStatement(sql1);
+               pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + id + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                        //String Stat = rs.getString("Status");
+         
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, id);
+                        pst.setString(2, member1);
+                        pst.setString(3, name);
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, mess);
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Removed");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                         int add1 = pst.executeUpdate();
+                            if(add1!=0){
+//           
+//             pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=?, Month=?, Year=? WHERE ClientID='" + id + "'");
+//
+//                        pst.setString(1,"Removed");
+//                        pst.setString(2,"Month");
+//                        pst.setString(3,"Year");
+//
+//                        int update = pst.executeUpdate();
+//                        if (update != 0) {
                       
                                   pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("DELETE FROM tbl_appointment WHERE ClientID='" + id + "'");
                                    int del11 =  pst.executeUpdate();
@@ -5562,7 +5741,22 @@ clear_app();
                                        clear_serv();
                                         refresh_appointment_service();
                                         clear_receipt();
-                                }}
+                                        
+                                        try{
+             String sql1 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
+            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql1);
+            rs = pst.executeQuery();
+            astable.setModel(DbUtils.resultSetToTableModel(rs));
+            aswalkin.setSelected(false);
+            
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+                                //}
+                        }
+                        
+                            }}
+                        
                             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
             }else if (p==1){
         int z = astable.getSelectedRow();
@@ -5604,7 +5798,7 @@ clear_app();
             jasperDesign.setQuery(jrquery);
             HashMap para= new HashMap();
             
-            para.put("name", asname.getText());
+             para.put("name", asname.getText());
              para.put("gender", assex.getText());
              para.put("marital", asmarital.getText());
              para.put("address", asaddress.getText());
@@ -5622,11 +5816,8 @@ clear_app();
             JasperPrint jp = JasperFillManager.fillReport(jr,para,connn);
             JasperPrintManager.printReport(jp, true);
             try{
-           String sql1 = "INSERT INTO tbl_appointment_removed (ClientID, Member, Fullname, Date, Time, Message, Status, Contact, Datereserved) SELECT * FROM tbl_appointment Where ClientID = '"+said.getText()+"'";
-            
-           pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();
-              
+                
+
             if (aswalkin.isSelected()==true){
                 pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
                     rs = pst.executeQuery();
@@ -5634,10 +5825,8 @@ clear_app();
                         String contact1 = rs.getString("Cell");
                         String member = rs.getString("Member");
                         
-                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat) values (?,?,?,?,?,?,?,?,?,?)";
-                        
+                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat,Month,Year) values (?,?,?,?,?,?,?,?,?,?,?,?)";                        
                         pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
-
                         pst.setString(1, asid.getText());
                         pst.setString(2, member);
                         pst.setString(3, asname.getText());
@@ -5648,7 +5837,8 @@ clear_app();
                         pst.setString(8, contact1);
                         pst.setString(9, s_date.getText());
                         pst.setString(10, "Served");
-                        
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
                         int add1 = pst.executeUpdate();
 
                             if(add1!=0){
@@ -5656,6 +5846,7 @@ clear_app();
                                  refresh_csalist();
                             }
                     }
+                    
             }else{             
             JFrame frame = new JFrame();
             String[] options = new String[2];
@@ -5664,8 +5855,37 @@ clear_app();
             int p = JOptionPane.showOptionDialog(frame.getContentPane(),"Select Option","Client Selection Option", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);
             if(p==0){
                   try{
-                       pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + asid.getText()  + "'");
+                      
+                      
+                      
+
+            pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                        //String Stat = rs.getString("Status");
+            try{
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, asid.getText());
+                        pst.setString(2, member1);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                         int add1 = pst.executeUpdate();
+
+                            if(add1!=0){
+              pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + asid.getText()  + "'");
 
                         pst.setString(1,"Served");
 
@@ -5681,28 +5901,67 @@ clear_app();
        refresh_csalist();
         }else{
         try{
+            
              String sql11 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql11);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
+                        
             
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        }
-                                }}
+        }}}
+                                }
+                    
+                                }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
+                    }
                             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
-            }else if(p==
-                    1){
+            }else if(p==1){
              if (aswalkin.isSelected()==true){
                refresh_csalist();
         }else{
         try{
+            
+                        pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                        //String Stat = rs.getString("Status");
+            
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, asid.getText());
+                        pst.setString(2, member1);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                         int add1 = pst.executeUpdate();
+
+                            if(add1!=0){    
+              pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + asid.getText()  + "'");
+
+                        pst.setString(1,"Served");
+
+                        int update3 = pst.executeUpdate();
+                        if (update3 != 0) {
+            
              String sql13 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql13);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
-            
+                        }
+                            }}
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -5717,6 +5976,11 @@ clear_app();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex);
         }
+        
+        
+        
+        
+        
         }else if (asno.isSelected()==true && asyes.isSelected()==false) {
         
          try{
@@ -5748,11 +6012,6 @@ clear_app();
             JasperPrint jp = JasperFillManager.fillReport(jr,para,connn);
             JasperPrintManager.printReport(jp, true);
             try{
-           String sql1 = "INSERT INTO tbl_appointment_removed (ClientID, Member, Fullname, Date, Time, Message, Status, Contact, Datereserved) SELECT * FROM tbl_appointment Where ClientID = '"+said.getText()+"'";
-            
-           pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();
-                            
                 if (aswalkin.isSelected()==true){
                     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
                     rs = pst.executeQuery();
@@ -5760,7 +6019,7 @@ clear_app();
                         String contact1 = rs.getString("Cell");
                         String member = rs.getString("Member");
                         
-                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat) values (?,?,?,?,?,?,?,?,?,?)";
+                        String sql = "Insert into tbl_appointment_removed (ClientID,Member,Fullname,Date,Time,Message,Status,Contact,Datereserved,ActStat,Month,Year) values (?,?,?,?,?,?,?,?,?,?,?,?)";
                         
                         pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql);
 
@@ -5774,6 +6033,8 @@ clear_app();
                         pst.setString(8, contact1);
                         pst.setString(9, s_date.getText());
                         pst.setString(10, "Served");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
                         
                         int add1 = pst.executeUpdate();
 
@@ -5793,8 +6054,34 @@ clear_app();
             int p = JOptionPane.showOptionDialog(frame.getContentPane(),"Select Option","Client Selection Option", 0,JOptionPane.INFORMATION_MESSAGE,null,options,null);
             if(p==0){
                   try{
-                       pst = (PreparedStatement) conn.prepareStatement(sql1);
-              pst.executeUpdate();     pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + asid.getText()  + "'");
+                      
+                       pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                        //String Stat = rs.getString("Status");
+          
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, asid.getText());
+                        pst.setString(2, member1);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                         int add1 = pst.executeUpdate();
+
+                            if(add1!=0){
+              pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("UPDATE tbl_appointment_removed SET  ActStat=? WHERE ClientID='" + asid.getText()  + "'");
 
                         pst.setString(1,"Served");
 
@@ -5810,27 +6097,53 @@ clear_app();
                refresh_csalist();
         }else{
         try{
-             String sql12 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
+            
+           
+            String sql12 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql12);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
-            
+                        
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
         }
-                                }}
+                                }}}}
                             }catch(SQLException e){ JOptionPane.showMessageDialog(null, e);}
             }else if(p==1){
             if (aswalkin.isSelected()==true){
                refresh_csalist();
         }else{
         try{
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement("SELECT * FROM tbl_Clientinfo WHERE ClientID= '" + asid.getText() + "'");
+                    rs = pst.executeQuery();
+                    if (rs.next()) {
+                        String contact11 = rs.getString("Cell");
+                        String member1 = rs.getString("Member");
+                        //String Stat = rs.getString("Status");
+          
+                String sql33 = "INSERT INTO tbl_appointment_removed Values (?,?,?,?,?,?,?,?,?,?,?,?)";                    
+                pst = (com.mysql.jdbc.PreparedStatement) conn.prepareStatement(sql33);
+                   // JOptionPane.showMessageDialog(null,"Insert");
+                        pst.setString(1, asid.getText());
+                        pst.setString(2, member1);
+                        pst.setString(3, asname.getText());
+                        pst.setString(4, s_date.getText());
+                        pst.setString(5, s_time.getText());
+                        pst.setString(6, "N/A");
+                        pst.setString(7, jLabel21.getText());
+                        pst.setString(8, contact11);
+                        pst.setString(9, s_date.getText());
+                        pst.setString(10, "Served");
+                        pst.setString(11, Month.getText());
+                        pst.setString(12, Year.getText());
+                        //pst.executeUpdate();
+                        pst.executeUpdate();
              String sql13 = "SELECT * From tbl_appointment WHERE Date='"+s_date.getText()+"'";
             pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql13);
             rs = pst.executeQuery();
             astable.setModel(DbUtils.resultSetToTableModel(rs));
-            
+                        }
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -5868,7 +6181,8 @@ clear_app();
     }//GEN-LAST:event_astableMouseEntered
 
     private void btnsmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsmsActionPerformed
-        if (smsid.getText().equals("[Click to Generate ID]")){
+        if (smsid.getText().equals("[Click to Generate ID]"
+                + "")){
         JOptionPane.showMessageDialog(null,"Please Generate for sms ID first");
         }else{
         if (btnsms.getText().equals("Save")){
@@ -6568,6 +6882,178 @@ clear_app();
 
     }//GEN-LAST:event_rclearActionPerformed
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jScrollPane14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane14MouseClicked
+        rsel.setSelectedItem("Client Served");
+    }//GEN-LAST:event_jScrollPane14MouseClicked
+
+    private void jScrollPane15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane15MouseClicked
+         rsel.setSelectedItem("Appointment Rescheduled");
+    }//GEN-LAST:event_jScrollPane15MouseClicked
+
+    private void jScrollPane12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane12MouseClicked
+        rsel.setSelectedItem("Appointment Removed");
+    }//GEN-LAST:event_jScrollPane12MouseClicked
+
+    private void rdmyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdmyActionPerformed
+            
+        
+        if (rsel.getSelectedItem().equals("Appointment Removed")){
+            //Client Served, Appointment Rescheduled, Appointment Removed
+                if (rdmy.getSelectedItem().equals("Daily")){    
+                     try {
+                    String sql = "SELECT * From tbl_appointment_removed where Date = '"+s_date.getText()+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Monthly")){    
+                     try {
+                    String sql = "SELECT * From tbl_appointment_removed where Month = '"+Month.getText()+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Yearly")){    
+                     try {
+                    String sql = "SELECT * From tbl_appointment_removed where Year = '"+Year.getText()+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }
+                
+                
+                
+                
+            } else if (rsel.getSelectedItem().equals("Appointment Rescheduled")){
+            //Client Served, Appointment Rescheduled, Appointment Removed
+                if (rdmy.getSelectedItem().equals("Daily")){    
+                     try {
+                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Date = '"+s_date.getText()+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Monthly")){    
+                     try {
+                     String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Month = '"+Month.getText()+"'";
+                    //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Month+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Yearly")){    
+                     try {
+                    
+                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Year = '"+Year.getText()+"'";
+//String sql = "SELECT * From tbl_appointment_removed where Date = '"+Year+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }
+                
+                
+                
+                
+            } else if (rsel.getSelectedItem().equals("Client Served")){
+            //Client Served, Appointment Rescheduled, Appointment Removed
+                if (rdmy.getSelectedItem().equals("Daily")){    
+                     try {
+                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Date = '"+s_date.getText()+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Monthly")){    
+                     try {
+                     String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Month = '"+Month.getText()+"'";
+                    //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Month+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }else if (rdmy.getSelectedItem().equals("Yearly")){    
+                     try {
+                    
+                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Year = '"+Year.getText()+"'";
+//String sql = "SELECT * From tbl_appointment_removed where Date = '"+Year+"'";
+                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                        } catch (SQLException ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                }
+            }
+    }//GEN-LAST:event_rdmyActionPerformed
+
+    private void refActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refActionPerformed
+        if (ref.isSelected() == false){
+        rsel.setEnabled(false);
+        rdmy.setEnabled(false);
+        jButton9.setEnabled(false);
+        
+        try {
+            
+            String sql = "SELECT * From tbl_appointment_removed where ActStat = '"+"Removed"+"'";
+            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+            // astable.setModel(DbUtils.resultSetToTableModel(rs));
+
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        try {
+            
+            String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"'";
+            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        try {
+            
+            String sql = "SELECT * From tbl_appointment_removed where ActStat = '"+"Served"+"'";
+            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        }else if (ref.isSelected() == true){
+        rsel.setEnabled(true);
+        rdmy.setEnabled(true);
+        jButton9.setEnabled(true);
+        }
+    }//GEN-LAST:event_refActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -6646,6 +7132,7 @@ clear_app();
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Main_Frame;
     private javax.swing.JPanel Manacc;
+    private javax.swing.JLabel Month;
     private javax.swing.JPanel Patcon;
     private javax.swing.JPanel RAppoint;
     private javax.swing.JPanel Rpayment;
@@ -6653,6 +7140,7 @@ clear_app();
     private javax.swing.JPanel Service;
     private javax.swing.JPanel Setapp;
     private javax.swing.JTextField Uname;
+    private javax.swing.JLabel Year;
     private javax.swing.JTextField a1;
     private javax.swing.JTextField a2;
     private javax.swing.JTextField a3;
@@ -6731,7 +7219,6 @@ clear_app();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
@@ -6741,6 +7228,7 @@ clear_app();
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -6771,6 +7259,7 @@ clear_app();
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -6926,14 +7415,18 @@ clear_app();
     private javax.swing.JTextField rc;
     private javax.swing.JButton rclear;
     private javax.swing.JTextField rd;
+    private javax.swing.JComboBox rdmy;
     private javax.swing.JTextField re;
     private javax.swing.ButtonGroup receipt;
+    private javax.swing.JCheckBox ref;
+    private javax.swing.ButtonGroup report;
     private javax.swing.JTextField rf;
     private javax.swing.JTextField rg;
     private javax.swing.JButton rgen;
     private javax.swing.JTextField rh;
     private javax.swing.JTextField ri;
     private javax.swing.JPasswordField rpword;
+    private javax.swing.JComboBox rsel;
     private javax.swing.JTextField rtotal;
     private javax.swing.JLabel s_date;
     private javax.swing.JLabel s_time;
