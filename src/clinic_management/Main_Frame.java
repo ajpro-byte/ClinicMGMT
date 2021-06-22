@@ -2836,7 +2836,7 @@ public class Main_Frame extends javax.swing.JFrame {
                 aswalkinActionPerformed(evt);
             }
         });
-        Service.add(aswalkin, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 70, 200, -1));
+        Service.add(aswalkin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 200, -1));
 
         asa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Negative", "Pass" }));
         Service.add(asa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 180, -1));
@@ -6939,7 +6939,7 @@ clear_app();
             //Client Served, Appointment Rescheduled, Appointment Removed
                 if (rdmy.getSelectedItem().equals("Daily")){    
                      try {
-                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Date = '"+s_date.getText()+"'";
+                    String sql = "SELECT * From tbl_appointment_removed where Status like '"+"Rescheduled"+"' and Date like '"+s_date.getText()+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
@@ -6948,7 +6948,7 @@ clear_app();
                         }
                 }else if (rdmy.getSelectedItem().equals("Monthly")){    
                      try {
-                     String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Month = '"+Month.getText()+"'";
+                     String sql = "SELECT * From tbl_appointment_removed where Status like '"+"Rescheduled"+"' and Month like '"+Month.getText()+"'";
                     //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Month+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
@@ -6959,7 +6959,7 @@ clear_app();
                 }else if (rdmy.getSelectedItem().equals("Yearly")){    
                      try {
                     
-                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"' && Year = '"+Year.getText()+"'";
+                    String sql = "SELECT * From tbl_appointment_removed where Status like '"+"Rescheduled"+"' and Year like '"+Year.getText()+"'";
 //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Year+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
@@ -6976,7 +6976,7 @@ clear_app();
             //Client Served, Appointment Rescheduled, Appointment Removed
                 if (rdmy.getSelectedItem().equals("Daily")){    
                      try {
-                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Date = '"+s_date.getText()+"'";
+                    String sql = "SELECT * From tbl_appointment_removed where ActStat like '"+"Served"+"' and Date like '"+s_date.getText()+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
@@ -6985,7 +6985,7 @@ clear_app();
                         }
                 }else if (rdmy.getSelectedItem().equals("Monthly")){    
                      try {
-                     String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Month = '"+Month.getText()+"'";
+                     String sql = "SELECT * From tbl_appointment_removed where ActStat like '"+"Served"+"' and Month like '"+Month.getText()+"'";
                     //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Month+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
@@ -6996,7 +6996,7 @@ clear_app();
                 }else if (rdmy.getSelectedItem().equals("Yearly")){    
                      try {
                     
-                    String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Served"+"' AND Year = '"+Year.getText()+"'";
+                    String sql = "SELECT * From tbl_appointment_removed where ActStat like '"+"Served"+"' and Year = '"+Year.getText()+"'";
 //String sql = "SELECT * From tbl_appointment_removed where Date = '"+Year+"'";
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
