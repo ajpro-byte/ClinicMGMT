@@ -1133,11 +1133,11 @@ public class Main_Frame extends javax.swing.JFrame {
         tbl_srv_month = new javax.swing.JTable();
         rdmy = new javax.swing.JComboBox();
         rsel = new javax.swing.JComboBox();
-        ref = new javax.swing.JCheckBox();
         jButton9 = new javax.swing.JButton();
         rmonth = new javax.swing.JComboBox();
         rdate = new com.toedter.calendar.JDateChooser();
         rgo = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
         SMS = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
@@ -3404,20 +3404,11 @@ public class Main_Frame extends javax.swing.JFrame {
                 rdmyActionPerformed(evt);
             }
         });
-        RAppoint.add(rdmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 260, 40));
+        RAppoint.add(rdmy, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 260, 40));
 
         rsel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         rsel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Client Served", "Appointment Rescheduled", "Appointment Removed" }));
-        RAppoint.add(rsel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 260, 40));
-
-        ref.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        ref.setText("Enable Filtering");
-        ref.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refActionPerformed(evt);
-            }
-        });
-        RAppoint.add(ref, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 50, 260, -1));
+        RAppoint.add(rsel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, 260, 40));
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("GENERATE REPORT");
@@ -3426,7 +3417,7 @@ public class Main_Frame extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 260, 40));
+        RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 220, 260, 40));
 
         rmonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec" }));
         rmonth.addActionListener(new java.awt.event.ActionListener() {
@@ -3434,10 +3425,10 @@ public class Main_Frame extends javax.swing.JFrame {
                 rmonthActionPerformed(evt);
             }
         });
-        RAppoint.add(rmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 80, 30));
+        RAppoint.add(rmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 80, 30));
 
         rdate.setDateFormatString("MMM-dd-yyyy");
-        RAppoint.add(rdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, 110, 30));
+        RAppoint.add(rdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 180, 110, 30));
 
         rgo.setText("GO");
         rgo.addActionListener(new java.awt.event.ActionListener() {
@@ -3445,7 +3436,12 @@ public class Main_Frame extends javax.swing.JFrame {
                 rgoActionPerformed(evt);
             }
         });
-        RAppoint.add(rgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 190, 50, 30));
+        RAppoint.add(rgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 180, 50, 30));
+
+        jLabel36.setFont(new java.awt.Font("Arial Black", 1, 16)); // NOI18N
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("SELECT FILTER OPTION");
+        RAppoint.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(834, 40, 270, -1));
 
         Main_Frame.add(RAppoint, "card14");
 
@@ -4924,21 +4920,21 @@ JOptionPane.showMessageDialog(null,"System error please check");
             JOptionPane.showMessageDialog(null, ex);
         }
         
+        }
         
-        
-         if (ref.isSelected() == false){
-        rsel.setEnabled(false);
-        rdmy.setEnabled(false);
-        jButton9.setEnabled(false);
-         rmonth.setEnabled(false);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
-        
-        }else if (ref.isSelected() == true){
-        rsel.setEnabled(true);
-        rdmy.setEnabled(true);
-        jButton9.setEnabled(true);
-        }}
+//         if (ref.isSelected() == false){
+//        rsel.setEnabled(false);
+//        rdmy.setEnabled(false);
+//        jButton9.setEnabled(false);
+//         rmonth.setEnabled(false);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
+//        
+//        }else if (ref.isSelected() == true){
+//        rsel.setEnabled(true);
+//        rdmy.setEnabled(true);
+//        jButton9.setEnabled(true);
+//        }}
         
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -6942,9 +6938,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
-            rmonth.setEnabled(false);
-            rdate.setEnabled(true);
-            rgo.setEnabled(true);
+//            rmonth.setEnabled(false);
+//            rdate.setEnabled(true);
+//            rgo.setEnabled(true);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6954,9 +6950,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(true);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//                    rmonth.setEnabled(true);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6966,9 +6962,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(false);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//                    rmonth.setEnabled(false);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6984,9 +6980,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(false);
-            rdate.setEnabled(true);
-            rgo.setEnabled(true);
+//                    rmonth.setEnabled(false);
+//            rdate.setEnabled(true);
+//            rgo.setEnabled(true);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6997,9 +6993,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(true);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//                    rmonth.setEnabled(true);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -7011,9 +7007,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(false);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//                    rmonth.setEnabled(false);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -7032,9 +7028,9 @@ clear_app();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
-                            rmonth.setEnabled(false);
-            rdate.setEnabled(true);
-            rgo.setEnabled(true);
+//                            rmonth.setEnabled(false);
+//            rdate.setEnabled(true);
+//            rgo.setEnabled(true);
                         }
                 }else if (rdmy.getSelectedItem().equals("Monthly")){    
                      try {
@@ -7043,9 +7039,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
-                    rmonth.setEnabled(true);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//                    rmonth.setEnabled(true);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -7058,61 +7054,15 @@ clear_app();
                     rs = pst.executeQuery();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
                     
-            rmonth.setEnabled(false);
-            rdate.setEnabled(false);
-            rgo.setEnabled(false);
+//            rmonth.setEnabled(false);
+//            rdate.setEnabled(false);
+//            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
                 }
             }
     }//GEN-LAST:event_rdmyActionPerformed
-
-    private void refActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refActionPerformed
-        if (ref.isSelected() == false){
-        rsel.setEnabled(false);
-        rdmy.setEnabled(false);
-        jButton9.setEnabled(false);
-        
-        try {
-            
-            String sql = "SELECT * From tbl_appointment_removed where ActStat = '"+"Removed"+"'";
-            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
-            // astable.setModel(DbUtils.resultSetToTableModel(rs));
-
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        
-        try {
-            
-            String sql = "SELECT * From tbl_appointment_removed where Status = '"+"Rescheduled"+"'";
-            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        try {
-            
-            String sql = "SELECT * From tbl_appointment_removed where ActStat = '"+"Served"+"'";
-            pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-        
-        }else if (ref.isSelected() == true){
-        rsel.setEnabled(true);
-        rdmy.setEnabled(true);
-        jButton9.setEnabled(true);
-        }
-    }//GEN-LAST:event_refActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if (rsel.getSelectedItem().equals("Client Served")){
@@ -7470,6 +7420,7 @@ clear_app();
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -7614,7 +7565,6 @@ clear_app();
     private javax.swing.JComboBox rdmy;
     private javax.swing.JTextField re;
     private javax.swing.ButtonGroup receipt;
-    private javax.swing.JCheckBox ref;
     private javax.swing.ButtonGroup report;
     private javax.swing.JTextField rf;
     private javax.swing.JTextField rg;
