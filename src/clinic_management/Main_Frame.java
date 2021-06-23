@@ -799,6 +799,7 @@ public class Main_Frame extends javax.swing.JFrame {
         setapp = new javax.swing.ButtonGroup();
         receipt = new javax.swing.ButtonGroup();
         report = new javax.swing.ButtonGroup();
+        rselect = new javax.swing.ButtonGroup();
         Main_Frame = new javax.swing.JPanel();
         Login = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -1134,6 +1135,9 @@ public class Main_Frame extends javax.swing.JFrame {
         rsel = new javax.swing.JComboBox();
         ref = new javax.swing.JCheckBox();
         jButton9 = new javax.swing.JButton();
+        rmonth = new javax.swing.JComboBox();
+        rdate = new com.toedter.calendar.JDateChooser();
+        rgo = new javax.swing.JButton();
         SMS = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
@@ -3422,7 +3426,26 @@ public class Main_Frame extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 180, 260, 40));
+        RAppoint.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 260, 40));
+
+        rmonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Nov", "Dec" }));
+        rmonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmonthActionPerformed(evt);
+            }
+        });
+        RAppoint.add(rmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 190, 80, 30));
+
+        rdate.setDateFormatString("MMM-dd-yyyy");
+        RAppoint.add(rdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, 110, 30));
+
+        rgo.setText("GO");
+        rgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rgoActionPerformed(evt);
+            }
+        });
+        RAppoint.add(rgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 190, 50, 30));
 
         Main_Frame.add(RAppoint, "card14");
 
@@ -4907,11 +4930,16 @@ JOptionPane.showMessageDialog(null,"System error please check");
         rsel.setEnabled(false);
         rdmy.setEnabled(false);
         jButton9.setEnabled(false);
+         rmonth.setEnabled(false);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
+        
         }else if (ref.isSelected() == true){
         rsel.setEnabled(true);
         rdmy.setEnabled(true);
         jButton9.setEnabled(true);
         }}
+        
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
@@ -6914,6 +6942,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+            rmonth.setEnabled(false);
+            rdate.setEnabled(true);
+            rgo.setEnabled(true);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6923,6 +6954,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(true);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6932,11 +6966,13 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(false);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
                 }
-                
                 
                 
                 
@@ -6948,6 +6984,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(false);
+            rdate.setEnabled(true);
+            rgo.setEnabled(true);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6958,6 +6997,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(true);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6969,6 +7011,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(false);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -6987,6 +7032,9 @@ clear_app();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
+                            rmonth.setEnabled(false);
+            rdate.setEnabled(true);
+            rgo.setEnabled(true);
                         }
                 }else if (rdmy.getSelectedItem().equals("Monthly")){    
                      try {
@@ -6995,6 +7043,9 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                    rmonth.setEnabled(true);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -7006,6 +7057,10 @@ clear_app();
                     pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                    
+            rmonth.setEnabled(false);
+            rdate.setEnabled(false);
+            rgo.setEnabled(false);
                         } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null, ex);
                         }
@@ -7066,7 +7121,7 @@ clear_app();
         Connection connn = MysqlConnection.ConnectDB();
             //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Served.jrxml");
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Served.jrxml");
-            // String query = "SELECT * FROM tbl_items";
+            //String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
@@ -7082,9 +7137,9 @@ clear_app();
         
            try{  
         Connection connn = MysqlConnection.ConnectDB();
-////            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Resched.jrxml");
+           //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Resched.jrxml");
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Resched.jrxml");
-            // String query = "SELECT * FROM tbl_items";
+             String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
             //jrquery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jasperDesign);
@@ -7101,7 +7156,7 @@ clear_app();
             
             try{  
         Connection connn = MysqlConnection.ConnectDB();
-////            JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Removed.jrxml");
+            //JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\MIS.Hardware\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Removed.jrxml");
             JasperDesign jasperDesign = JRXmlLoader.load("C:\\Users\\Acer\\Documents\\NetBeansProjects\\Clinic_Management\\src\\clinic_management\\Removed.jrxml");
             // String query = "SELECT * FROM tbl_items";
             JRDesignQuery jrquery = new JRDesignQuery();
@@ -7119,6 +7174,80 @@ clear_app();
         
         
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void rgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgoActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM-dd-yyyy");
+                    String date1 = sdf.format(rdate.getDate());
+                    
+                    if(rsel.getSelectedItem().equals("Client Served")){
+                                        try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Date like '"+date1+"' and ActStat like '"+"Served"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                            } else if(rsel.getSelectedItem().equals("Appointment Rescheduled")){
+                                                
+                                                 try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Date like '"+date1+"' and Status like '"+"Rescheduled"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                      } else if(rsel.getSelectedItem().equals("Appointment Rescheduled")){
+                                          
+                                                try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Date like '"+date1+"' and ActStat like '"+"Removed"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                          
+                                      }
+       
+    }//GEN-LAST:event_rgoActionPerformed
+
+    private void rmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmonthActionPerformed
+       
+                            if(rsel.getSelectedItem().equals("Client Served")){
+                                        try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Month like '"+rmonth.getSelectedItem()+"' and ActStat like '"+"Served"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_rdasg.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                            } else if(rsel.getSelectedItem().equals("Appointment Rescheduled")){
+                                                
+                                                 try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Month like '"+rmonth.getSelectedItem()+"' and Status like '"+"Rescheduled"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_rm_serve.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                      } else if(rsel.getSelectedItem().equals("Appointment Rescheduled")){
+                                          
+                                                try {
+                                    String sql = "SELECT * From tbl_appointment_removed where Month like '"+rmonth.getSelectedItem()+"' and ActStat like '"+"Removed"+"'";
+                                    pst = (PreparedStatement) (java.sql.PreparedStatement) conn.prepareStatement(sql);
+                                    rs = pst.executeQuery();
+                                    tbl_srv_month.setModel(DbUtils.resultSetToTableModel(rs));
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(null, ex);
+                                        }
+                                          
+                                      }
+        
+    }//GEN-LAST:event_rmonthActionPerformed
 
     /**
      * @param args the command line arguments
@@ -7481,6 +7610,7 @@ clear_app();
     private javax.swing.JTextField rc;
     private javax.swing.JButton rclear;
     private javax.swing.JTextField rd;
+    private com.toedter.calendar.JDateChooser rdate;
     private javax.swing.JComboBox rdmy;
     private javax.swing.JTextField re;
     private javax.swing.ButtonGroup receipt;
@@ -7489,10 +7619,13 @@ clear_app();
     private javax.swing.JTextField rf;
     private javax.swing.JTextField rg;
     private javax.swing.JButton rgen;
+    private javax.swing.JButton rgo;
     private javax.swing.JTextField rh;
     private javax.swing.JTextField ri;
+    private javax.swing.JComboBox rmonth;
     private javax.swing.JPasswordField rpword;
     private javax.swing.JComboBox rsel;
+    private javax.swing.ButtonGroup rselect;
     private javax.swing.JTextField rtotal;
     private javax.swing.JLabel s_date;
     private javax.swing.JLabel s_time;
